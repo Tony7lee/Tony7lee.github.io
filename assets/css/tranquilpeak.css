@@ -72,7 +72,7 @@ h4,
 h5,
 h6 {
   letter-spacing: -0.04em;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Chalkduster", "OCR A Std", "fantasy", "Advent Pro", "Courier New", "monospace";
   font-weight: 700;
   line-height: 1.45em;
   color: #4a4a4a; }
@@ -165,7 +165,7 @@ pre > code {
 code {
   font-size: 1.5rem;
   display: inline-block;
-  font-family: Menlo, Consolas, monospace;
+  font-family: "Courier New", "PingFangSC-Regular", "fantasy", "Open Sans", sans-serif;
   font-weight: 400;
   background-color: #f7f8f8;
   padding: 0 10px; }
@@ -638,7 +638,7 @@ blockquote {
       transform: translate3d(75px, 0, 0); } }
 
 #sidebar {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Chalkduster", "OCR A Std", "fantasy", "Advent Pro", "Courier New", "monospace";
   height: 100%;
   position: fixed;
   top: 0;
@@ -652,7 +652,7 @@ blockquote {
   #sidebar .sidebar-container {
     overflow: auto; }
   #sidebar .sidebar-profile {
-    color: #000;
+    color: #222;
     text-align: center;
     padding-top: 18px;
     margin-bottom: 15px; }
@@ -661,7 +661,7 @@ blockquote {
       margin: 0 auto; }
     #sidebar .sidebar-profile .sidebar-profile-name {
       font-size: 1.1em;
-      color: #000; }
+      color: #222; }
   #sidebar ul.sidebar-buttons {
     padding: 0;
     margin: 0 0 20px 0; }
@@ -671,12 +671,12 @@ blockquote {
       height: 45px;
       line-height: 45px; }
       #sidebar ul.sidebar-buttons li.sidebar-button .sidebar-button-link {
-        color: #000;
+        color: #222;
         display: block;
         height: 100%; }
         #sidebar ul.sidebar-buttons li.sidebar-button .sidebar-button-link:hover, #sidebar ul.sidebar-buttons li.sidebar-button .sidebar-button-link:active {
           text-decoration: none;
-          color: #595959; }
+          color: #555555; }
     #sidebar ul.sidebar-buttons:first-child {
       margin-top: 5px; }
 
@@ -711,13 +711,13 @@ blockquote {
           line-height: 30px;
           padding-top: 0;
           vertical-align: middle;
-          margin-right: 15px; }
+          margin-right: 10px; }
         #sidebar[data-behavior="1"] ul.sidebar-buttons li.sidebar-button .sidebar-button-link .sidebar-button-desc, #sidebar[data-behavior="2"] ul.sidebar-buttons li.sidebar-button .sidebar-button-link .sidebar-button-desc, #sidebar[data-behavior="4"] ul.sidebar-buttons li.sidebar-button .sidebar-button-link .sidebar-button-desc, #sidebar[data-behavior="5"] ul.sidebar-buttons li.sidebar-button .sidebar-button-link .sidebar-button-desc {
           display: inline-block;
           width: auto;
           height: 35px;
           line-height: 35px;
-          font-size: 1.5rem;
+          font-size: 1.4rem;
           letter-spacing: 0.3px;
           vertical-align: middle; }
     #sidebar[data-behavior="1"].pushed, #sidebar[data-behavior="2"].pushed, #sidebar[data-behavior="4"].pushed, #sidebar[data-behavior="5"].pushed {
@@ -817,13 +817,13 @@ blockquote {
           line-height: 30px;
           padding-top: 0;
           vertical-align: middle;
-          margin-right: 15px; }
+          margin-right: 10px; }
         #sidebar[data-behavior="4"] ul.sidebar-buttons li.sidebar-button .sidebar-button-link .sidebar-button-desc, #sidebar[data-behavior="5"] ul.sidebar-buttons li.sidebar-button .sidebar-button-link .sidebar-button-desc {
           display: inline-block;
           width: auto;
           height: 35px;
           line-height: 35px;
-          font-size: 1.5rem;
+          font-size: 1.4rem;
           letter-spacing: 0.3px;
           vertical-align: middle; }
     #sidebar[data-behavior="4"].pushed, #sidebar[data-behavior="5"].pushed {
@@ -892,13 +892,13 @@ blockquote {
           line-height: 30px;
           padding-top: 0;
           vertical-align: middle;
-          margin-right: 15px; }
+          margin-right: 10px; }
         #sidebar[data-behavior="1"] ul.sidebar-buttons li.sidebar-button .sidebar-button-link .sidebar-button-desc, #sidebar[data-behavior="2"] ul.sidebar-buttons li.sidebar-button .sidebar-button-link .sidebar-button-desc {
           display: inline-block;
           width: auto;
           height: 35px;
           line-height: 35px;
-          font-size: 1.5rem;
+          font-size: 1.4rem;
           letter-spacing: 0.3px;
           vertical-align: middle; }
     #sidebar[data-behavior="1"].pushed, #sidebar[data-behavior="2"].pushed {
@@ -965,13 +965,13 @@ blockquote {
           line-height: 30px;
           padding-top: 0;
           vertical-align: middle;
-          margin-right: 15px; }
+          margin-right: 10px; }
         #sidebar[data-behavior="4"] ul.sidebar-buttons li.sidebar-button .sidebar-button-link .sidebar-button-desc, #sidebar[data-behavior="5"] ul.sidebar-buttons li.sidebar-button .sidebar-button-link .sidebar-button-desc {
           display: inline-block;
           width: auto;
           height: 35px;
           line-height: 35px;
-          font-size: 1.5rem;
+          font-size: 1.4rem;
           letter-spacing: 0.3px;
           vertical-align: middle; }
     #sidebar[data-behavior="4"].pushed, #sidebar[data-behavior="5"].pushed {
@@ -1036,14 +1036,14 @@ blockquote {
       #sidebar[data-behavior="1"] .sidebar-profile .sidebar-profile-location {
         font-weight: 400;
         font-size: 1.6rem;
-        color: #000; }
+        color: #222; }
       #sidebar[data-behavior="1"] .sidebar-profile .sidebar-profile-job,
       #sidebar[data-behavior="1"] .sidebar-profile .sidebar-profile-location {
         margin-top: 0;
         width: 49%;
         display: inline-block; }
     #sidebar[data-behavior="1"] ul.sidebar-buttons {
-      width: 49%;
+      width: 48%;
       vertical-align: top;
       display: inline-block; }
       #sidebar[data-behavior="1"] ul.sidebar-buttons li.sidebar-button {
@@ -1063,13 +1063,13 @@ blockquote {
             line-height: 35px;
             padding-top: 0;
             vertical-align: middle;
-            margin-right: 15px; }
+            margin-right: 10px; }
           #sidebar[data-behavior="1"] ul.sidebar-buttons li.sidebar-button .sidebar-button-link .sidebar-button-desc {
             display: block;
             width: auto;
             height: 35px;
             line-height: 35px;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             letter-spacing: 0.3px;
             vertical-align: middle;
             overflow: hidden;
@@ -1110,13 +1110,13 @@ blockquote {
           line-height: 30px;
           padding-top: 0;
           vertical-align: middle;
-          margin-right: 15px; }
+          margin-right: 10px; }
         #sidebar[data-behavior="2"] ul.sidebar-buttons li.sidebar-button .sidebar-button-link .sidebar-button-desc {
           display: inline-block;
           width: auto;
           height: 35px;
           line-height: 35px;
-          font-size: 1.5rem;
+          font-size: 1.4rem;
           letter-spacing: 0.3px;
           vertical-align: middle; }
     #sidebar[data-behavior="2"].pushed {
@@ -1179,14 +1179,14 @@ blockquote {
       #sidebar[data-behavior="4"] .sidebar-profile .sidebar-profile-location {
         font-weight: 400;
         font-size: 1.6rem;
-        color: #000; }
+        color: #222; }
       #sidebar[data-behavior="4"] .sidebar-profile .sidebar-profile-job,
       #sidebar[data-behavior="4"] .sidebar-profile .sidebar-profile-location {
         margin-top: 0;
         width: 49%;
         display: inline-block; }
     #sidebar[data-behavior="4"] ul.sidebar-buttons {
-      width: 49%;
+      width: 48%;
       vertical-align: top;
       display: inline-block; }
       #sidebar[data-behavior="4"] ul.sidebar-buttons li.sidebar-button {
@@ -1206,13 +1206,13 @@ blockquote {
             line-height: 35px;
             padding-top: 0;
             vertical-align: middle;
-            margin-right: 15px; }
+            margin-right: 10px; }
           #sidebar[data-behavior="4"] ul.sidebar-buttons li.sidebar-button .sidebar-button-link .sidebar-button-desc {
             display: block;
             width: auto;
             height: 35px;
             line-height: 35px;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             letter-spacing: 0.3px;
             vertical-align: middle;
             overflow: hidden;
@@ -1254,13 +1254,13 @@ blockquote {
           line-height: 30px;
           padding-top: 0;
           vertical-align: middle;
-          margin-right: 15px; }
+          margin-right: 10px; }
         #sidebar[data-behavior="5"] ul.sidebar-buttons li.sidebar-button .sidebar-button-link .sidebar-button-desc {
           display: inline-block;
           width: auto;
           height: 35px;
           line-height: 35px;
-          font-size: 1.5rem;
+          font-size: 1.4rem;
           letter-spacing: 0.3px;
           vertical-align: middle; }
     #sidebar[data-behavior="5"].pushed {
@@ -1668,7 +1668,7 @@ figure.highlight,
     position: absolute;
     bottom: 0;
     width: calc(100% - (1.5em) * 2);
-    font-family: "Open Sans";
+    font-family: "OCR A Std", "PingFangSC-Regular", "fantasy", "Advent Pro", "monospace";
     font-style: italic;
     background: rgba(0, 0, 0, 0.75);
     font-size: 1.3rem;
@@ -1878,7 +1878,7 @@ a.fancybox {
       text-decoration: none; }
   .post .post-meta {
     line-height: 1.5em;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Chalkduster", "OCR A Std", "fantasy", "Advent Pro", "Courier New", "monospace";
     font-size: 1.3rem;
     font-weight: 400;
     color: #9eabb3; }
@@ -1887,7 +1887,7 @@ a.fancybox {
   .post .post-content {
     text-rendering: optimizelegibility;
     letter-spacing: -0.3px;
-    font-family: "Merriweather", serif;
+    font-family: "Courier New", "PingFangSC-Regular", "fantasy", "Open Sans", sans-serif;
     color: #5d686f;
     margin-top: 20px;
     font-weight: 400;
@@ -2016,7 +2016,7 @@ a.fancybox {
         text-decoration: none; }
     .post-header-cover .post-header .post-meta {
       max-width: 750px;
-      font-family: "Open Sans", sans-serif;
+      font-family: "Chalkduster", "OCR A Std", "fantasy", "Advent Pro", "Courier New", "monospace";
       font-size: 1.6rem;
       color: white !important;
       font-weight: 400;
@@ -2171,7 +2171,7 @@ a.fancybox {
   .postShorten .postShorten-content {
     text-rendering: optimizelegibility;
     letter-spacing: -0.3px;
-    font-family: "Merriweather", serif;
+    font-family: "Courier New", "PingFangSC-Regular", "fantasy", "Open Sans", sans-serif;
     color: #5d686f;
     font-weight: 400;
     overflow: hidden;
