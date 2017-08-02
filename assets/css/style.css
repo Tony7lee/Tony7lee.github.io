@@ -2538,7 +2538,7 @@
 @font-face {
   font-family: 'Open Sans';
   font-style: normal;
-  font-weight: 700;
+  font-weight: 600;
   src: local("Open Sans Bold"), local("OpenSans-Bold"), url(https://fonts.gstatic.com/s/opensans/v10/k3k702ZOKiLJc3WVjuplzJS3E-kSBmtLoNJPDtbj2Pk.ttf) format("truetype"); }
 
 @font-face {
@@ -2587,7 +2587,7 @@ body {
   padding: 0;
   background: white;
   font-family: "Open Sans", sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   line-height: 1.9em;
   letter-spacing: 0.01em;
   -webkit-font-smoothing: subpixel-antialiased;
@@ -2603,7 +2603,7 @@ h5,
 h6 {
   letter-spacing: -0.04em;
   font-family: "Chalkduster", "OCR A Std", "fantasy", "Advent Pro", "Courier New", "monospace";
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.45em;
   color: #4a4a4a; }
 
@@ -2618,25 +2618,25 @@ h6 {
   margin: 1em 0 0.5em 0; }
 
 h1 {
-  font-size: 2.8rem; }
-
-h2 {
-  font-size: 2.4rem; }
-
-h3 {
   font-size: 2rem; }
 
-h4 {
+h2 {
   font-size: 1.8rem; }
 
-h5 {
-  font-size: 1.7rem; }
-
-h6 {
+h3 {
   font-size: 1.6rem; }
 
+h4 {
+  font-size: 1.5rem; }
+
+h5 {
+  font-size: 1.3rem; }
+
+h6 {
+  font-size: 1.2rem; }
+
 p {
-  margin: 0 0 1.5em 0; }
+  margin: 0 0 1.3em 0; }
 
 ul,
 ol,
@@ -2668,7 +2668,7 @@ table {
     background: #f7f8f8; }
 
 hr {
-  margin: 1.5em 0 0;
+  margin: 1em 0 0;
   outline: none;
   border: none;
   border-top: 1px solid #eef2f8; }
@@ -2689,14 +2689,14 @@ pre > code {
   margin: 0;
   cursor: text;
   overflow-x: auto;
-  line-height: 1.7em;
-  font-size: 1.4rem; }
+  line-height: 1.6em;
+  font-size: 1.3rem; }
 
 code {
   font-size: 1.5rem;
   display: inline-block;
-  font-family: "Courier New", "PingFangSC-Regular", "fantasy", "Open Sans", sans-serif;
-  font-weight: 400;
+  font-family: "PingFangSC-Regular", "Courier New", "fantasy", "Open Sans", sans-serif;
+  font-weight: 300;
   background-color: #f7f8f8;
   padding: 0 10px; }
 
@@ -2708,7 +2708,7 @@ blockquote {
   border-left: 3px solid #5d686f;
   padding: 0 15px;
   font-style: italic;
-  margin: 1.5em 0 0; }
+  margin: 1em 0 0; }
   blockquote cite:before {
     content: ' — ';
     padding: 0 0.3em; }
@@ -2717,33 +2717,33 @@ blockquote {
 
 @media only screen and (max-width: 767px) {
   code {
-    font-size: 1.4rem; }
+    font-size: 1.1rem; }
   h1 {
-    font-size: 2.6rem; }
-  h2 {
-    font-size: 2.2rem; }
-  h3 {
     font-size: 1.8rem; }
-  h4 {
+  h2 {
     font-size: 1.6rem; }
+  h3 {
+    font-size: 1.4rem; }
+  h4 {
+    font-size: 1.3rem; }
   h5 {
-    font-size: 1.5rem; }
+    font-size: 1.1rem; }
   h6 {
-    font-size: 1.4rem; } }
+    font-size: 1rem; } }
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   h1 {
-    font-size: 2.65rem; }
-  h2 {
-    font-size: 2.25rem; }
-  h3 {
     font-size: 1.85rem; }
-  h4 {
+  h2 {
     font-size: 1.65rem; }
+  h3 {
+    font-size: 1.45rem; }
+  h4 {
+    font-size: 1.35rem; }
   h5 {
-    font-size: 1.55rem; }
+    font-size: 1.15rem; }
   h6 {
-    font-size: 1.45rem; } }
+    font-size: 1.05rem; } }
 
 #about {
   display: none;
@@ -2793,9 +2793,9 @@ blockquote {
     #about #about-card #about-card-job,
     #about #about-card #about-card-location,
     #about #about-card #about-card-bio {
-      font-size: 1.6rem;
+      font-size: 1.3rem;
       line-height: 1.9em;
-      font-weight: 400;
+      font-weight: 300;
       color: #5d686f; }
 
 @media only screen and (max-width: 767px) {
@@ -2971,7 +2971,7 @@ blockquote {
 
 #footer {
   color: #9eabb3;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-align: center;
   margin-top: 70px;
   height: auto;
@@ -3016,14 +3016,15 @@ blockquote {
     color: #88909a; }
   #header .header-title {
     text-align: center;
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     line-height: 55px;
     margin: 0; }
     #header .header-title .header-title-link {
       color: #88909a;
-      font-weight: normal; }
+      font-weight: normal;
+      font-family: "Chalkduster", "OCR A Std", "fantasy", "Advent Pro", "Courier New", "monospace"; }
       #header .header-title .header-title-link:hover, #header .header-title .header-title-link:active {
-        color: #6e7681;
+        color: #3f444a;
         text-decoration: none; }
   #header.header-up {
     -webkit-transform: translate3d(0, -55px, 0);
@@ -3905,7 +3906,7 @@ blockquote {
   .archive .archive-posts .archive-post::before {
     font-family: 'FontAwesome';
     content: '\f0da';
-    font-size: 1.3rem; }
+    font-size: 1.1rem; }
 
 .boxes {
   margin-top: 20px; }
@@ -3923,7 +3924,7 @@ blockquote {
   padding: 8px 15px;
   margin: 0;
   letter-spacing: 0.01em;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   cursor: pointer; }
   .btn:hover, .btn:focus, .btn:active {
     text-decoration: none; }
@@ -3964,17 +3965,17 @@ blockquote {
     border: 1px solid #bd1908; }
 
 .btn--medium {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   padding: 8px 15px; }
 
 .btn--small {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   padding: 8px 15px; }
 
 .caption {
   display: block;
   font-family: "Merriweather", serif;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   color: #81929d;
   text-align: center;
   font-style: italic;
@@ -4038,7 +4039,7 @@ figure.highlight,
   figure.highlight .line,
   .codeblock .line {
     height: 1.3em;
-    font-size: 1.4rem; }
+    font-size: 1.3rem; }
 
 .codeblock--tabbed figure.highlight,
 .codeblock--tabbed pre > code {
@@ -4201,7 +4202,7 @@ figure.highlight,
     font-family: "OCR A Std", "PingFangSC-Regular", "fantasy", "Advent Pro", "monospace";
     font-style: italic;
     background: rgba(0, 0, 0, 0.75);
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     color: white;
     padding: 0.5em 1.5em;
     z-index: 1; }
@@ -4255,45 +4256,45 @@ a.fancybox {
 
 @media only screen and (min-width: 1024px) {
   .markdown h1 {
-    font-size: 3rem; }
+    font-size: 2.2rem; }
   .markdown h2 {
-    font-size: 2.7rem; }
+    font-size: 2rem; }
   .markdown h3 {
-    font-size: 2.4rem; }
+    font-size: 1.8rem; }
   .markdown h4 {
-    font-size: 2.1rem; }
+    font-size: 1.6rem; }
   .markdown h5 {
-    font-size: 1.9rem; }
+    font-size: 1.4rem; }
   .markdown h6 {
-    font-size: 1.7rem; } }
+    font-size: 1.2rem; } }
 
 @media only screen and (max-width: 767px) {
   .markdown h1 {
-    font-size: 2.65rem; }
+    font-size: 1.85rem; }
   .markdown h2 {
-    font-size: 2.35rem; }
+    font-size: 1.65rem; }
   .markdown h3 {
-    font-size: 2.05rem; }
+    font-size: 1.45rem; }
   .markdown h4 {
-    font-size: 1.75rem; }
+    font-size: 1.25rem; }
   .markdown h5 {
-    font-size: 1.55rem; }
+    font-size: 1.05rem; }
   .markdown h6 {
-    font-size: 1.35rem; } }
+    font-size: 0.85rem; } }
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .markdown h1 {
-    font-size: 2.8rem; }
+    font-size: 2rem; }
   .markdown h2 {
-    font-size: 2.5rem; }
+    font-size: 1.8rem; }
   .markdown h3 {
-    font-size: 2.2rem; }
+    font-size: 1.6rem; }
   .markdown h4 {
-    font-size: 1.9rem; }
+    font-size: 1.4rem; }
   .markdown h5 {
-    font-size: 1.7rem; }
+    font-size: 1.2rem; }
   .markdown h6 {
-    font-size: 1.5rem; } }
+    font-size: 1rem; } }
 
 .media-body, .media-left {
   display: table-cell;
@@ -4392,7 +4393,7 @@ a.fancybox {
       margin-right: 10px; }
     .pagination-bar .pagination .pagination-number {
       float: right;
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       color: #9eabb3; }
 
 .post {
@@ -4400,6 +4401,13 @@ a.fancybox {
   width: 100%;
   display: inline-block;
   vertical-align: top; }
+  .post h1,
+  .post h2,
+  .post h3,
+  .post h4,
+  .post h5,
+  .post h6 {
+    font-family: "PingFangSC-Regular", "Courier New", "fantasy", "Open Sans", sans-serif; }
   .post .post-header .post-title {
     margin: 0;
     word-break: initial;
@@ -4408,19 +4416,19 @@ a.fancybox {
       text-decoration: none; }
   .post .post-meta {
     line-height: 1.5em;
-    font-family: "Chalkduster", "OCR A Std", "fantasy", "Advent Pro", "Courier New", "monospace";
-    font-size: 1.3rem;
-    font-weight: 400;
+    font-family: "PingFangSC-Regular", "Courier New", "fantasy", "Open Sans", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
     color: #9eabb3; }
     .post .post-meta a {
       color: #9eabb3; }
   .post .post-content {
     text-rendering: optimizelegibility;
     letter-spacing: -0.3px;
-    font-family: "Courier New", "PingFangSC-Regular", "fantasy", "Open Sans", sans-serif;
+    font-family: "PingFangSC-Regular", "Courier New", "fantasy", "Open Sans", sans-serif;
     color: #5d686f;
-    margin-top: 20px;
-    font-weight: 400;
+    margin-top: 5px;
+    font-weight: 300;
     overflow: hidden;
     -webkit-hypens: auto;
     -moz-hypens: auto;
@@ -4430,7 +4438,7 @@ a.fancybox {
       width: auto;
       max-width: 100%; }
     .post .post-content :not(blockquote):not(.alert) > p {
-      margin: 1.5em 0 0 0; }
+      margin: 1em 0 0 0; }
   .post .post-footer {
     margin-top: 20px; }
     .post .post-footer-tags {
@@ -4440,15 +4448,15 @@ a.fancybox {
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .post .post-header .post-title {
-    font-size: 3.3rem; } }
+    font-size: 2.2rem; } }
 
 @media only screen and (min-width: 1024px) {
   .post .post-header .post-title {
-    font-size: 3.7rem; } }
+    font-size: 2.3rem; } }
 
 @media only screen and (min-width: 768px) {
   .post-content {
-    font-size: 1.7rem; } }
+    font-size: 1.5rem; } }
 
 .post-actions-wrap {
   height: 60px;
@@ -4546,10 +4554,10 @@ a.fancybox {
         text-decoration: none; }
     .post-header-cover .post-header .post-meta {
       max-width: 750px;
-      font-family: "Chalkduster", "OCR A Std", "fantasy", "Advent Pro", "Courier New", "monospace";
-      font-size: 1.6rem;
+      font-family: "PingFangSC-Regular", "Courier New", "fantasy", "Open Sans", sans-serif;
+      font-size: 1.3rem;
       color: white !important;
-      font-weight: 400;
+      font-weight: 300;
       letter-spacing: 0.05em;
       text-shadow: 0 1px 0 rgba(0, 0, 0, 0.9);
       margin: 0 auto; }
@@ -4564,11 +4572,11 @@ a.fancybox {
 
 @media only screen and (max-width: 479px) {
   .post-header-cover .post-header .post-title {
-    font-size: 2.8rem; } }
+    font-size: 2rem; } }
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
   .post-header-cover .post-header .post-title {
-    font-size: 3.3rem; } }
+    font-size: 2rem; } }
 
 @media only screen and (max-width: 767px) {
   .post-header-cover {
@@ -4585,7 +4593,7 @@ a.fancybox {
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .post-header-cover .post-header .post-title {
-    font-size: 5.8rem;
+    font-size: 5rem;
     line-height: 1.3em; }
   .post-header-cover[data-behavior="1"], .post-header-cover[data-behavior="2"], .post-header-cover[data-behavior="3"] {
     width: calc(100% - 75px);
@@ -4607,7 +4615,7 @@ a.fancybox {
 
 @media only screen and (min-width: 1024px) and (max-width: 1279px) {
   .post-header-cover .post-header .post-title {
-    font-size: 6.5rem;
+    font-size: 5.7rem;
     line-height: 1.3em; }
   .post-header-cover[data-behavior="1"], .post-header-cover[data-behavior="2"] {
     width: calc(100% - 250px);
@@ -4632,7 +4640,7 @@ a.fancybox {
 
 @media only screen and (min-width: 1280px) {
   .post-header-cover .post-header .post-title {
-    font-size: 6.5rem;
+    font-size: 5.7rem;
     line-height: 1.3em; }
   .post-header-cover[data-behavior="1"] {
     width: calc(100% - 500px);
@@ -4694,14 +4702,14 @@ a.fancybox {
   .postShorten .postShorten-meta,
   .postShorten .postShorten-readingtime,
   .postShorten .postShorten-excerpt_link {
-    font-family: "Open Sans", sans-serif;
-    font-size: 1.3rem;
-    font-weight: 400; }
+    font-family: "PingFangSC-Regular", "Courier New", "fantasy", "Open Sans", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300; }
   .postShorten .postShorten-excerpt,
   .postShorten .postShorten-content {
     text-rendering: optimizelegibility;
     letter-spacing: -0.3px;
-    font-family: "Courier New", "PingFangSC-Regular", "fantasy", "Open Sans", sans-serif;
+    font-family: "PingFangSC-Regular", "Courier New", "fantasy", "Open Sans", sans-serif;
     color: #5d686f;
     font-weight: 400;
     overflow: hidden;
@@ -4716,7 +4724,7 @@ a.fancybox {
   .postShorten .postShorten-excerpt {
     margin-top: 15px; }
   .postShorten .postShorten-content {
-    margin-top: 25px; }
+    margin-top: 5px; }
 
 @media only screen and (max-width: 479px) {
   .postShorten .postShorten-thumbnailimg {
@@ -4891,12 +4899,12 @@ a.tag--danger,
 
 a.tag--default,
 .tag--default {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   padding: 4.5px 15px; }
 
 a.tag--small,
 .tag--small {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   padding: 2px 10px; }
 
 .text-left {
@@ -4927,28 +4935,28 @@ a.tag--small,
   font-size: 1rem !important; }
 
 .text-small {
-  font-size: 1.3rem !important; }
+  font-size: 1.1rem !important; }
 
 .text-medium {
-  font-size: 1.5rem !important; }
+  font-size: 1.2rem !important; }
 
 .text-base {
-  font-size: 1.6rem !important; }
+  font-size: 1.3rem !important; }
 
 .text-large {
-  font-size: 1.7rem !important; }
+  font-size: 1.4rem !important; }
 
 .text-xlarge {
-  font-size: 1.8rem !important; }
+  font-size: 1.5rem !important; }
 
 .text-strong {
-  font-weight: 700 !important; }
+  font-weight: 600 !important; }
 
 .text-regular {
-  font-weight: 400 !important; }
+  font-weight: 300 !important; }
 
 .text-light {
-  font-weight: 300 !important; }
+  font-weight: 200 !important; }
 
 .text-italic {
   font-style: italic !important; }
@@ -4983,7 +4991,7 @@ a.tag--small,
     z-index: 1000;
     padding: 8px;
     min-width: 180px;
-    background-color: rgba(0, 0, 20, 0.93);
+    background-color: rgba(0, 0, 20, 0.88);
     color: #fff;
     content: attr(data-tooltip);
     font-size: 0.93em;
@@ -5014,7 +5022,7 @@ a.tag--small,
 
 .tooltip--top:before, .tooltip:before, [data-tooltip]:before {
   margin-bottom: -12px;
-  border-top-color: rgba(0, 0, 20, 0.93); }
+  border-top-color: rgba(0, 0, 20, 0.88); }
 
 .tooltip--top:after, .tooltip:after, [data-tooltip]:after {
   margin-left: -91px; }
@@ -5035,7 +5043,7 @@ a.tag--small,
   margin-right: -12px;
   margin-bottom: 0;
   border-top-color: transparent;
-  border-left-color: rgba(0, 0, 20, 0.93); }
+  border-left-color: rgba(0, 0, 20, 0.88); }
 
 .tooltip--left:after {
   margin-left: 0;
@@ -5057,7 +5065,7 @@ a.tag--small,
   margin-top: -12px;
   margin-bottom: 0;
   border-top-color: transparent;
-  border-bottom-color: rgba(0, 0, 20, 0.93); }
+  border-bottom-color: rgba(0, 0, 20, 0.88); }
 
 .tooltip--bottom:before, .tooltip--bottom:after {
   top: 100%;
@@ -5075,7 +5083,7 @@ a.tag--small,
   margin-bottom: 0;
   margin-left: -12px;
   border-top-color: transparent;
-  border-right-color: rgba(0, 0, 20, 0.93); }
+  border-right-color: rgba(0, 0, 20, 0.88); }
 
 .tooltip--right:after {
   margin-left: 0;

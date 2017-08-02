@@ -6,23 +6,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Later">
-    <title>Later</title>
+    <title>浅析Web开发中前端路由实现的几种方式 - Later</title>
     <meta name="author" content="Later">
     
     
         <link rel="icon" href="http://later.tech/assets/images/favicon16.ico">
     
     
-    <meta name="description" content="Blog of Later.">
+    <meta name="description" content="故事从名叫Oliver的绿箭虾`说起，这位大虾酷爱社交网站，一天他打开了 Twitter ，从发过的tweets的选项卡一路切到followers选项卡，Oliver发现页面的内容变化了，URL也变化了，但为什么页面没有闪烁刷新呢？于是Oliver打开的网络监控器（没错，Oliver是个程序员），他惊讶地发现在切换选项卡时，只有几个XHR请求发生，但页面的URL却在对应着变化，这让Oliver不得">
+<meta name="keywords" content="ajax,html5">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Later">
-<meta property="og:url" content="http://later.tech/index.html">
+<meta property="og:title" content="浅析Web开发中前端路由实现的几种方式">
+<meta property="og:url" content="http://later.tech/2015/07/28/浅析Web开发中前端路由实现的几种方式/index.html">
 <meta property="og:site_name" content="Later">
-<meta property="og:description" content="Blog of Later.">
+<meta property="og:description" content="故事从名叫Oliver的绿箭虾`说起，这位大虾酷爱社交网站，一天他打开了 Twitter ，从发过的tweets的选项卡一路切到followers选项卡，Oliver发现页面的内容变化了，URL也变化了，但为什么页面没有闪烁刷新呢？于是Oliver打开的网络监控器（没错，Oliver是个程序员），他惊讶地发现在切换选项卡时，只有几个XHR请求发生，但页面的URL却在对应着变化，这让Oliver不得">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2017-08-02T15:53:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Later">
-<meta name="twitter:description" content="Blog of Later.">
+<meta name="twitter:title" content="浅析Web开发中前端路由实现的几种方式">
+<meta name="twitter:description" content="故事从名叫Oliver的绿箭虾`说起，这位大虾酷爱社交网站，一天他打开了 Twitter ，从发过的tweets的选项卡一路切到followers选项卡，Oliver发现页面的内容变化了，URL也变化了，但为什么页面没有闪烁刷新呢？于是Oliver打开的网络监控器（没错，Oliver是个程序员），他惊讶地发现在切换选项卡时，只有几个XHR请求发生，但页面的URL却在对应着变化，这让Oliver不得">
     
     
         
@@ -51,7 +53,7 @@
         
     
 
-<header id="header" data-behavior="1">
+<header id="header" data-behavior="4">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
         <a class="header-title-link" href="/ ">Later</a>
@@ -75,7 +77,7 @@
         
     
 
-<nav id="sidebar" data-behavior="1">
+<nav id="sidebar" data-behavior="4">
     <div class="sidebar-container">
         
             <div class="sidebar-profile">
@@ -210,25 +212,22 @@
 </nav>
 
             
-            <div id="main" data-behavior="1"
+            <div id="main" data-behavior="4"
                  class="
                         hasCoverMetaIn
                         ">
-                <section class="postShorten-group main-content-wrap">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
     
     
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/2015/07/28/浅析Web开发中前端路由实现的几种方式/">
-                            浅析Web开发中前端路由实现的几种方式
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            浅析Web开发中前端路由实现的几种方式
+        </h1>
+    
+    
+        <div class="post-meta">
     <time itemprop="datePublished" datetime="2015-07-28T22:32:48+08:00">
 	
 		    2015-07-28
@@ -243,10 +242,12 @@
     
 </div>
 
-            </div>
-            
-                <div class="postShorten-content" itemprop="articleBody">
-                    <p>故事从名叫Oliver的绿箭虾`说起，这位大虾酷爱社交网站，一天他打开了 <a href="https://twitter.com" target="_blank" rel="external">Twitter</a> ，从发过的tweets的选项卡一路切到followers选项卡，Oliver发现页面的内容变化了，URL也变化了，但为什么页面没有闪烁刷新呢？于是Oliver打开的网络监控器（没错，Oliver是个程序员），他惊讶地发现在切换选项卡时，只有几个XHR请求发生，但页面的URL却在对应着变化，这让Oliver不得不去思考这一机制的原因…</p>
+    
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>故事从名叫Oliver的绿箭虾`说起，这位大虾酷爱社交网站，一天他打开了 <a href="https://twitter.com" target="_blank" rel="external">Twitter</a> ，从发过的tweets的选项卡一路切到followers选项卡，Oliver发现页面的内容变化了，URL也变化了，但为什么页面没有闪烁刷新呢？于是Oliver打开的网络监控器（没错，Oliver是个程序员），他惊讶地发现在切换选项卡时，只有几个XHR请求发生，但页面的URL却在对应着变化，这让Oliver不得不去思考这一机制的原因…</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;叙事体故事讲完，进入正题。首先，我们知道传统而经典的Web开发中，服务器端承担了大部分业务逻辑，但随着2.0时代ajax的到来，前端开始担负起更多的数据通信和与之对应的逻辑。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;在过去，Server端处理来自浏览器的请求时，要根据不同的Url路由，拼接出对应的视图页面，通过Http返回给浏览器进行解析渲染。Server不得不承担这份艰巨的责任，谁叫他是Server，而不是Owner -_-“。为了让Server端更好地把重心放到实现核心逻辑和看守数据宝库，把部分数据交互的逻辑交给前端担负，让前端来分担Server端的压力显得尤为重要，前端也有这个责任和能力。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;那么问题来了，前端的能力是什么呢，有哪些能力呢？</p>
@@ -313,31 +314,74 @@
 <p>最后总结下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">H5+hash方案：兼容所以浏览器，又照顾到了高级浏览器应用新特性。</div><div class="line"></div><div class="line">纯H5方案：表示IE是谁，我不认识-_-&quot;，这套方案应用纯H5的新特性，URL随心定制。</div><div class="line"></div><div class="line">纯Hash方案：其实一开始我是拒绝的，可是...可是...IE~~:(</div></pre></td></tr></table></figure></p>
 <p>不论哪种方案，最终的目的都是希望能解决<code>ajax标签化</code>的问题。以上说了这么多，仅仅是分析了这些路由系统大概的实现方式和兼容性解决方案，如果有机会，我会再写一篇文章介绍下主流框架中或者类库中，具体是如何实现这套路由系统的，javascript版本的历史栈管理模块又是怎么样的，实现思路如何。</p>
 
-                    
-                        
-                    
-                    
-                        <p>
-                            <a href="/2015/07/28/浅析Web开发中前端路由实现的几种方式/#post-footer" class="postShorten-excerpt_link link">
-                                评论和共享
-                            </a>
-                        </p>
-                    
-                </div>
             
         </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
         
-    </article>
-    
-    <div class="pagination-bar">
-    <ul class="pagination">
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">标签</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/ajax-html5/">ajax,html5</a>
+
+            </div>
         
         
-        <li class="pagination-number">第 1 页 共 1 页</li>
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://later.tech/2015/07/28/浅析Web开发中前端路由实现的几种方式/">
+                    <i class="fa fa-weibo"></i>
+                </a>
+            </li>
+        
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
     </ul>
 </div>
 
-</section>
+
+        
+        
+            
+        
+    </div>
+</article>
+
 
 
                 <footer id="footer" class="main-content-wrap">
@@ -347,6 +391,72 @@
 </footer>
 
             </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://later.tech/2015/07/28/浅析Web开发中前端路由实现的几种方式/">
+                    <i class="fa fa-weibo"></i>
+                </a>
+            </li>
+        
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://later.tech/2015/07/28/浅析Web开发中前端路由实现的几种方式/">
+                    <i class="fa fa-weibo"></i><span>分享到 Weibo</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
             
         </div>
         
@@ -443,6 +553,8 @@
         <!--SCRIPTS-->
 <script src="/assets/js/script-avqz2nretugqbtfiqzzmanawweqzyx2k139q47e8bdvgvsgvjndu5onsl08d.min.js"></script>
 <!--SCRIPTS END-->
+
+    
 
 
     </body>
