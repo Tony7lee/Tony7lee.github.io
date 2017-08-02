@@ -2588,7 +2588,7 @@ body {
   background: white;
   font-family: "Open Sans", sans-serif;
   font-size: 1.5rem;
-  line-height: 1.9em;
+  line-height: 1.7em;
   letter-spacing: 0.01em;
   -webkit-font-smoothing: subpixel-antialiased;
   font-smoothing: subpixel-antialiased; }
@@ -2689,16 +2689,17 @@ pre > code {
   margin: 0;
   cursor: text;
   overflow-x: auto;
-  line-height: 1.6em;
+  line-height: 1.9em;
   font-size: 1.3rem; }
 
 code {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   display: inline-block;
   font-family: "PingFangSC-Regular", "Courier New", "fantasy", "Open Sans", sans-serif;
-  font-weight: 300;
-  background-color: #f7f8f8;
-  padding: 0 10px; }
+  font-weight: 500;
+  background-color: #d8e4d9;
+  padding: 0 10px;
+  line-height: 1.4em; }
 
 acronym,
 abbr {
@@ -3985,7 +3986,7 @@ blockquote {
 figure.highlight,
 .codeblock {
   margin: 10px 0;
-  line-height: 1.3em;
+  line-height: 1.5em;
   padding-top: 15px;
   padding-bottom: 15px;
   overflow: hidden; }
@@ -4038,7 +4039,7 @@ figure.highlight,
       overflow-y: hidden; }
   figure.highlight .line,
   .codeblock .line {
-    height: 1.3em;
+    height: 1.5em;
     font-size: 1.3rem; }
 
 .codeblock--tabbed figure.highlight,
@@ -5162,11 +5163,11 @@ a.tag--small,
     transform: translateY(-50%); }
 
 pre > code {
-  background: #f7f8f8;
+  background: #d8e4d9;
   color: #333; }
 
 code {
-  background-color: #f7f8f8; }
+  background-color: #d8e4d9; }
 
 .codeblock--tabbed figcaption .tab.active {
   background: #349ef3;
@@ -5174,15 +5175,15 @@ code {
 
 figure.highlight,
 .codeblock {
-  background: #f7f8f8;
+  background: #d8e4d9;
   color: #333; }
   figure.highlight figcaption,
   .codeblock figcaption {
-    background: #f7f8f8;
+    background: #d8e4d9;
     color: #999999; }
   figure.highlight .gutter,
   .codeblock .gutter {
-    background: #f7f8f8;
+    background: #d8e4d9;
     border-right-color: #e6e6e6; }
     figure.highlight .gutter .line,
     .codeblock .gutter .line {
