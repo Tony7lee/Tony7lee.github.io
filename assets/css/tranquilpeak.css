@@ -167,7 +167,7 @@ code {
   display: inline-block;
   font-family: "PingFangSC-Regular", "Courier New", "fantasy", "Open Sans", sans-serif;
   font-weight: 500;
-  background-color: #d8e4d9;
+  background-color: #e2efe3;
   padding: 0 10px;
   line-height: 1.4em; }
 
@@ -2633,11 +2633,11 @@ a.tag--small,
     transform: translateY(-50%); }
 
 pre > code {
-  background: #d8e4d9;
+  background: #e2efe3;
   color: #333; }
 
 code {
-  background-color: #d8e4d9; }
+  background-color: #e2efe3; }
 
 .codeblock--tabbed figcaption .tab.active {
   background: #349ef3;
@@ -2645,15 +2645,15 @@ code {
 
 figure.highlight,
 .codeblock {
-  background: #d8e4d9;
+  background: #e2efe3;
   color: #333; }
   figure.highlight figcaption,
   .codeblock figcaption {
-    background: #d8e4d9;
+    background: #e2efe3;
     color: #999999; }
   figure.highlight .gutter,
   .codeblock .gutter {
-    background: #d8e4d9;
+    background: #e2efe3;
     border-right-color: #e6e6e6; }
     figure.highlight .gutter .line,
     .codeblock .gutter .line {
