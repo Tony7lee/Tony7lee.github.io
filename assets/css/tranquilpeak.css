@@ -73,19 +73,19 @@ h5,
 h6 {
   letter-spacing: -0.04em;
   font-family: "Chalkduster", "OCR A Std", "fantasy", "Advent Pro", "Courier New", "monospace";
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.45em;
   color: #4a4a4a; }
 
 h1,
 h2,
 h3 {
-  margin: 1em 0 1em 0; }
+  margin: .5em 0 .3em 0; }
 
 h4,
 h5,
 h6 {
-  margin: 1em 0 0.5em 0; }
+  margin: .4em 0 0.2em 0; }
 
 h1 {
   font-size: 2rem; }
@@ -173,10 +173,10 @@ code {
 
 acronym,
 abbr {
-  border-bottom: 1px dotted #5d686f; }
+  border-bottom: 1px dotted #444c51; }
 
 blockquote {
-  border-left: 3px solid #5d686f;
+  border-left: 3px solid #88c38a;
   padding: 0 15px;
   font-style: italic;
   margin: 1em 0 0; }
@@ -267,7 +267,7 @@ blockquote {
       font-size: 1.3rem;
       line-height: 1.9em;
       font-weight: 300;
-      color: #5d686f; }
+      color: #444c51; }
 
 @media only screen and (max-width: 767px) {
   #about #about-card {
@@ -1361,7 +1361,7 @@ blockquote {
   display: none; }
 
 .archive .archive-title {
-  color: #5d686f; }
+  color: #444c51; }
   .archive .archive-title:hover {
     text-decoration: underline; }
 
@@ -1369,7 +1369,7 @@ blockquote {
   list-style: none; }
   .archive .archive-posts .archive-post .archive-post-title {
     margin-left: 10px;
-    color: #5d686f; }
+    color: #444c51; }
     .archive .archive-posts .archive-post .archive-post-title:hover {
       text-decoration: underline; }
   .archive .archive-posts .archive-post .archive-post-date {
@@ -1586,7 +1586,7 @@ figure.highlight,
   width: 100%;
   border: none;
   outline: none;
-  color: #5d686f;
+  color: #444c51;
   font-weight: 300; }
   .form-control:hover, .form-control:focus {
     outline: none; }
@@ -1785,7 +1785,7 @@ a.fancybox {
   color: #9eabb3; }
 
 .media-content {
-  color: #5d686f; }
+  color: #444c51; }
 
 .modal-container {
   position: fixed;
@@ -1824,7 +1824,7 @@ a.fancybox {
     position: absolute;
     top: 9px;
     right: 15px;
-    color: #5d686f;
+    color: #444c51;
     cursor: pointer; }
 
 .overlay {
@@ -1897,7 +1897,7 @@ a.fancybox {
     text-rendering: optimizelegibility;
     letter-spacing: -0.3px;
     font-family: "PingFangSC-Regular", "Courier New", "fantasy", "Open Sans", sans-serif;
-    color: #5d686f;
+    color: #444c51;
     margin-top: 5px;
     font-weight: 300;
     overflow: hidden;
@@ -1910,6 +1910,13 @@ a.fancybox {
       max-width: 100%; }
     .post .post-content :not(blockquote):not(.alert) > p {
       margin: 1em 0 0 0; }
+    .post .post-content h1,
+    .post .post-content h2,
+    .post .post-content h3,
+    .post .post-content h4,
+    .post .post-content h5,
+    .post .post-content h6 {
+      font-weight: 700; }
   .post .post-footer {
     margin-top: 20px; }
     .post .post-footer-tags {
@@ -1987,7 +1994,7 @@ a.fancybox {
     float: right;
     margin: 1.5em 0 1.5em 35px; }
   .pullquote.blur {
-    background-color: #eef0f1; }
+    background-color: #d0d5d8; }
 
 .post-header .post-title {
   margin: 0;
@@ -2181,7 +2188,7 @@ a.fancybox {
     text-rendering: optimizelegibility;
     letter-spacing: -0.3px;
     font-family: "PingFangSC-Regular", "Courier New", "fantasy", "Open Sans", sans-serif;
-    color: #5d686f;
+    color: #444c51;
     font-weight: 400;
     overflow: hidden;
     -webkit-hypens: auto;
@@ -2192,6 +2199,20 @@ a.fancybox {
       display: block;
       width: auto;
       max-width: 100%; }
+    .postShorten .postShorten-excerpt h1,
+    .postShorten .postShorten-excerpt h2,
+    .postShorten .postShorten-excerpt h3,
+    .postShorten .postShorten-excerpt h4,
+    .postShorten .postShorten-excerpt h5,
+    .postShorten .postShorten-excerpt h6,
+    .postShorten .postShorten-content h1,
+    .postShorten .postShorten-content h2,
+    .postShorten .postShorten-content h3,
+    .postShorten .postShorten-content h4,
+    .postShorten .postShorten-content h5,
+    .postShorten .postShorten-content h6 {
+      font-weight: 700;
+      font-family: "PingFangSC-Regular", "Courier New", "fantasy", "Open Sans", sans-serif; }
   .postShorten .postShorten-excerpt {
     margin-top: 15px; }
   .postShorten .postShorten-content {
@@ -2287,7 +2308,7 @@ a.fancybox {
   top: 15px;
   right: 15px;
   font-size: 20px;
-  color: #5d686f;
+  color: #444c51;
   cursor: pointer; }
 
 @media only screen and (max-width: 767px) {
@@ -2439,7 +2460,7 @@ a.tag--small,
   text-decoration: underline !important; }
 
 .text-color-base {
-  color: #5d686f !important; }
+  color: #444c51 !important; }
 
 .text-color-light {
   color: #9eabb3 !important; }
@@ -2594,7 +2615,7 @@ a.tag--small,
     position: absolute;
     top: 15px;
     left: 15px;
-    color: #5d686f; }
+    color: #444c51; }
   #algolia-search-modal .media-content {
     font-size: 0.95em; }
   #algolia-search-modal .search-input {
@@ -2612,7 +2633,7 @@ a.tag--small,
     margin-top: 0; }
   #algolia-search-modal .results-count {
     line-height: 50px;
-    color: #5d686f; }
+    color: #444c51; }
   #algolia-search-modal .searchby-algolia {
     position: absolute;
     top: 15px;
