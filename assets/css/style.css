@@ -2602,7 +2602,7 @@ h4,
 h5,
 h6 {
   letter-spacing: -0.04em;
-  font-family: "Chalkduster", "OCR A Std", "fantasy", "Advent Pro", "Courier New", "monospace";
+  font-family: "Chalkduster", "OCR A Std", "Comic Sans MS", "andale mono", "Courier New", "monospace";
   font-weight: 700;
   line-height: 1.45em;
   color: #4a4a4a; }
@@ -2695,7 +2695,7 @@ pre > code {
 code {
   font-size: 1.4rem;
   display: inline-block;
-  font-family: "PingFangSC-Regular", "Courier New", "fantasy", "Open Sans", sans-serif;
+  font-family: "PingFangSC-Regular", "Courier New", "Comic Sans MS", "andale mono", "Open Sans", sans-serif;
   font-weight: 500;
   background-color: #e2efe3;
   padding: 0 10px;
@@ -3023,7 +3023,7 @@ blockquote {
     #header .header-title .header-title-link {
       color: #88909a;
       font-weight: normal;
-      font-family: "Chalkduster", "OCR A Std", "fantasy", "Advent Pro", "Courier New", "monospace"; }
+      font-family: "Chalkduster", "OCR A Std", "Comic Sans MS", "andale mono", "Courier New", "monospace"; }
       #header .header-title .header-title-link:hover, #header .header-title .header-title-link:active {
         color: #3f444a;
         text-decoration: none; }
@@ -3170,7 +3170,7 @@ blockquote {
       transform: translate3d(75px, 0, 0); } }
 
 #sidebar {
-  font-family: "Chalkduster", "OCR A Std", "fantasy", "Advent Pro", "Courier New", "monospace";
+  font-family: "Chalkduster", "OCR A Std", "Comic Sans MS", "andale mono", "Courier New", "monospace";
   height: 100%;
   position: fixed;
   top: 0;
@@ -4200,7 +4200,7 @@ figure.highlight,
     position: absolute;
     bottom: 0;
     width: calc(100% - (1.5em) * 2);
-    font-family: "OCR A Std", "PingFangSC-Regular", "fantasy", "Advent Pro", "monospace";
+    font-family: "OCR A Std", "PingFangSC-Regular", "Comic Sans MS", "andale mono", "monospace";
     font-style: italic;
     background: rgba(0, 0, 0, 0.75);
     font-size: 1.1rem;
@@ -4408,7 +4408,7 @@ a.fancybox {
   .post h4,
   .post h5,
   .post h6 {
-    font-family: "PingFangSC-Regular", "Courier New", "fantasy", "Open Sans", sans-serif; }
+    font-family: "PingFangSC-Regular", "Courier New", "Comic Sans MS", "andale mono", "Open Sans", sans-serif; }
   .post .post-header .post-title {
     margin: 0;
     word-break: initial;
@@ -4417,7 +4417,7 @@ a.fancybox {
       text-decoration: none; }
   .post .post-meta {
     line-height: 1.5em;
-    font-family: "PingFangSC-Regular", "Courier New", "fantasy", "Open Sans", sans-serif;
+    font-family: "PingFangSC-Regular", "Courier New", "Comic Sans MS", "andale mono", "Open Sans", sans-serif;
     font-size: 1.1rem;
     font-weight: 300;
     color: #9eabb3; }
@@ -4426,7 +4426,7 @@ a.fancybox {
   .post .post-content {
     text-rendering: optimizelegibility;
     letter-spacing: -0.3px;
-    font-family: "PingFangSC-Regular", "Courier New", "fantasy", "Open Sans", sans-serif;
+    font-family: "PingFangSC-Regular", "Courier New", "Comic Sans MS", "andale mono", "Open Sans", sans-serif;
     color: #444c51;
     margin-top: 5px;
     font-weight: 300;
@@ -4562,7 +4562,7 @@ a.fancybox {
         text-decoration: none; }
     .post-header-cover .post-header .post-meta {
       max-width: 750px;
-      font-family: "PingFangSC-Regular", "Courier New", "fantasy", "Open Sans", sans-serif;
+      font-family: "PingFangSC-Regular", "Courier New", "Comic Sans MS", "andale mono", "Open Sans", sans-serif;
       font-size: 1.3rem;
       color: white !important;
       font-weight: 300;
@@ -4710,14 +4710,14 @@ a.fancybox {
   .postShorten .postShorten-meta,
   .postShorten .postShorten-readingtime,
   .postShorten .postShorten-excerpt_link {
-    font-family: "PingFangSC-Regular", "Courier New", "fantasy", "Open Sans", sans-serif;
+    font-family: "PingFangSC-Regular", "Courier New", "Comic Sans MS", "andale mono", "Open Sans", sans-serif;
     font-size: 1.1rem;
     font-weight: 300; }
   .postShorten .postShorten-excerpt,
   .postShorten .postShorten-content {
     text-rendering: optimizelegibility;
     letter-spacing: -0.3px;
-    font-family: "PingFangSC-Regular", "Courier New", "fantasy", "Open Sans", sans-serif;
+    font-family: "PingFangSC-Regular", "Courier New", "Comic Sans MS", "andale mono", "Open Sans", sans-serif;
     color: #444c51;
     font-weight: 400;
     overflow: hidden;
@@ -4742,7 +4742,7 @@ a.fancybox {
     .postShorten .postShorten-content h5,
     .postShorten .postShorten-content h6 {
       font-weight: 700;
-      font-family: "PingFangSC-Regular", "Courier New", "fantasy", "Open Sans", sans-serif; }
+      font-family: "PingFangSC-Regular", "Courier New", "Comic Sans MS", "andale mono", "Open Sans", sans-serif; }
   .postShorten .postShorten-excerpt {
     margin-top: 15px; }
   .postShorten .postShorten-content {
