@@ -6,25 +6,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Later">
-    <title>node模块路径的那些事 - Later</title>
+    <title>node全局变量 - Later</title>
     <meta name="author" content="Later">
     
     
         <link rel="icon" href="http://later.tech/assets/images/favicon16.ico">
     
     
-    <meta name="description" content="Blog of Later.">
+    <meta name="description" content="global总之这货很大…-_-“, 别名GLOBAL，类似客户端的window。模块间，变量在global上声明的方式，写了一个简单的demo： 123456// 子模块：demoModule.jslll = &apos;lll&apos;;var aaa = &apos;aaa&apos;;global.ttt = &apos;ttt&apos;;exports = &amp;#123;&amp;#125;; 1234567891011// 入口：main.jslet">
 <meta name="keywords" content="node,javascript">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="node模块路径的那些事">
-<meta property="og:url" content="http://later.tech/2017/08/08/node模块路径的那些事/index.html">
+<meta property="og:title" content="node全局变量">
+<meta property="og:url" content="http://later.tech/2017/08/15/node全局变量/index.html">
 <meta property="og:site_name" content="Later">
-<meta property="og:description" content="Blog of Later.">
+<meta property="og:description" content="global总之这货很大…-_-“, 别名GLOBAL，类似客户端的window。模块间，变量在global上声明的方式，写了一个简单的demo： 123456// 子模块：demoModule.jslll = &apos;lll&apos;;var aaa = &apos;aaa&apos;;global.ttt = &apos;ttt&apos;;exports = &amp;#123;&amp;#125;; 1234567891011// 入口：main.jslet">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2017-08-17T14:23:34.000Z">
+<meta property="og:updated_time" content="2017-09-04T15:25:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="node模块路径的那些事">
-<meta name="twitter:description" content="Blog of Later.">
+<meta name="twitter:title" content="node全局变量">
+<meta name="twitter:description" content="global总之这货很大…-_-“, 别名GLOBAL，类似客户端的window。模块间，变量在global上声明的方式，写了一个简单的demo： 123456// 子模块：demoModule.jslll = &apos;lll&apos;;var aaa = &apos;aaa&apos;;global.ttt = &apos;ttt&apos;;exports = &amp;#123;&amp;#125;; 1234567891011// 入口：main.jslet">
     
     
         
@@ -211,14 +211,14 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            node模块路径的那些事
+            node全局变量
         </h1>
     
     
         <div class="post-meta">
-    <time itemprop="datePublished" datetime="2017-08-08T22:03:56+08:00">
+    <time itemprop="datePublished" datetime="2017-08-15T22:03:56+08:00">
 	
-		    2017-08-08
+		    2017-08-15
     	
     </time>
     
@@ -235,7 +235,18 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            
+            <h3 id="global"><a href="#global" class="headerlink" title="global"></a>global</h3><p>总之这货很大…-_-“, 别名GLOBAL，类似客户端的window。<br>模块间，变量在global上声明的方式，写了一个简单的demo：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 子模块：demoModule.js</span></div><div class="line">lll = <span class="string">'lll'</span>;</div><div class="line"><span class="keyword">var</span> aaa = <span class="string">'aaa'</span>;</div><div class="line">global.ttt = <span class="string">'ttt'</span>;</div><div class="line"></div><div class="line">exports = &#123;&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 入口：main.js</span></div><div class="line"><span class="keyword">let</span> dm = <span class="built_in">require</span>(<span class="string">'./demoModule.js'</span>);  <span class="comment">// 引用模块</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> eee = <span class="string">'eee'</span>;</div><div class="line">rrr = <span class="string">'rrr'</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(global.lll);</div><div class="line"><span class="built_in">console</span>.log(global.aaa);</div><div class="line"><span class="built_in">console</span>.log(global.ttt);</div><div class="line"><span class="built_in">console</span>.log(global.eee);</div><div class="line"><span class="built_in">console</span>.log(global.rrr);</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 运行</div><div class="line">node main.js</div><div class="line"><span class="meta">#</span> 结果: </div><div class="line">lll</div><div class="line">undefined</div><div class="line">ttt</div><div class="line">undefined</div><div class="line">rrr</div><div class="line"><span class="meta">#</span> 对比下结果吧</div></pre></td></tr></table></figure>
+<p><em>结论：永远使用 <code>var</code> 定义变量以避免引入全局变量，因为全局变量会污染 命名空间，提高代码的耦合风险。</em></p>
+<h3 id="dirname"><a href="#dirname" class="headerlink" title="__dirname"></a>__dirname</h3><p>文件所在的文件目录</p>
+<h3 id="filename"><a href="#filename" class="headerlink" title="__filename"></a>__filename</h3><p>文件名，全路径</p>
+<h3 id="process"><a href="#process" class="headerlink" title="process"></a>process</h3><p>当前进程<br><em>process.exit()</em><br>退出当前进程<br><em>待续</em></p>
+<h3 id="module"><a href="#module" class="headerlink" title="module"></a>module</h3><p>模块引用<br><em>module.exports</em><br>模块输出出口，被读取地址<br><em>module.id</em><br>模块标识，一般是文件名<br><em>module.filename</em><br>模块文件名<br><em>module.loaded</em><br>模块是否加载完成<br><em>module.parent</em><br>调用该模块的模块，若无则为：undefined<br><em>module.children</em><br>当前模块要用到的其他模块，返回数组，若无则为：[]<br><em>module.paths</em><br>模块查找路径，返回数组类型。<br>require方法内部加载的优先级会用到，如repl加载查找的优先级：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[<span class="string">'/Users/later/works/galaxy/repl/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/works/galaxy/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/works/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/node_modules'</span>,</div><div class="line"> <span class="string">'/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/.node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/.node_libraries'</span>,</div><div class="line"> <span class="string">'/usr/local/lib/node'</span>]</div></pre></td></tr></table></figure>
+<h3 id="exports"><a href="#exports" class="headerlink" title="exports"></a>exports</h3><p>module.exports的引用<br>相当于模块默认有这个声明：<br><em>var exports = module.exports;</em></p>
+
             
         </div>
     </div>
@@ -254,7 +265,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/08/15/node全局变量/"  data-tooltip="node全局变量">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -262,7 +273,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/08/03/整理了一些不错的polyfill/" data-tooltip="整理的一些不错的polyfill">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/08/08/node模块路径的那些事/" data-tooltip="node模块路径的那些事">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -280,7 +291,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://later.tech/2017/08/08/node模块路径的那些事/">
+                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://later.tech/2017/08/15/node全局变量/">
                     <i class="fa fa-weibo"></i>
                 </a>
             </li>
@@ -320,7 +331,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/08/15/node全局变量/"  data-tooltip="node全局变量">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -328,7 +339,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/08/03/整理了一些不错的polyfill/" data-tooltip="整理的一些不错的polyfill">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/08/08/node模块路径的那些事/" data-tooltip="node模块路径的那些事">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -346,7 +357,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://later.tech/2017/08/08/node模块路径的那些事/">
+                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://later.tech/2017/08/15/node全局变量/">
                     <i class="fa fa-weibo"></i>
                 </a>
             </li>
@@ -371,7 +382,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://later.tech/2017/08/08/node模块路径的那些事/">
+                <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://later.tech/2017/08/15/node全局变量/">
                     <i class="fa fa-weibo"></i><span>分享到 Weibo</span>
                 </a>
             </li>
