@@ -211,64 +211,6 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title" itemprop="headline">
                     
-                        <a class="link-unstyled" href="/2017/08/15/node全局变量/">
-                            node全局变量
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2017-08-15T22:03:56+08:00">
-	
-		    2017-08-15
-    	
-    </time>
-    
-        <span>发布在 </span>
-        
-    <a class="category-link" href="/categories/node/">node</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content" itemprop="articleBody">
-                    <h3 id="global"><a href="#global" class="headerlink" title="global"></a>global</h3><p>总之这货很大…-_-“, 别名GLOBAL，类似客户端的window。<br>模块间，变量在global上声明的方式，写了一个简单的demo：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 子模块：demoModule.js</span></div><div class="line">lll = <span class="string">'lll'</span>;</div><div class="line"><span class="keyword">var</span> aaa = <span class="string">'aaa'</span>;</div><div class="line">global.ttt = <span class="string">'ttt'</span>;</div><div class="line"></div><div class="line">exports = &#123;&#125;;</div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 入口：main.js</span></div><div class="line"><span class="keyword">let</span> dm = <span class="built_in">require</span>(<span class="string">'./demoModule.js'</span>);  <span class="comment">// 引用模块</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> eee = <span class="string">'eee'</span>;</div><div class="line">rrr = <span class="string">'rrr'</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(global.lll);</div><div class="line"><span class="built_in">console</span>.log(global.aaa);</div><div class="line"><span class="built_in">console</span>.log(global.ttt);</div><div class="line"><span class="built_in">console</span>.log(global.eee);</div><div class="line"><span class="built_in">console</span>.log(global.rrr);</div></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 运行</div><div class="line">node main.js</div><div class="line"><span class="meta">#</span> 结果: </div><div class="line">lll</div><div class="line">undefined</div><div class="line">ttt</div><div class="line">undefined</div><div class="line">rrr</div><div class="line"><span class="meta">#</span> 对比下结果吧</div></pre></td></tr></table></figure>
-<p><em>结论：永远使用 <code>var</code> 定义变量以避免引入全局变量，因为全局变量会污染 命名空间，提高代码的耦合风险。</em></p>
-<h3 id="dirname"><a href="#dirname" class="headerlink" title="__dirname"></a>__dirname</h3><p>文件所在的文件目录</p>
-<h3 id="filename"><a href="#filename" class="headerlink" title="__filename"></a>__filename</h3><p>文件名，全路径</p>
-<h3 id="process"><a href="#process" class="headerlink" title="process"></a>process</h3><p>当前进程<br><em>process.exit()</em><br>退出当前进程<br><em>待续</em></p>
-<h3 id="module"><a href="#module" class="headerlink" title="module"></a>module</h3><p>模块引用<br><em>module.exports</em><br>模块输出出口，被读取地址<br><em>module.id</em><br>模块标识，一般是文件名<br><em>module.filename</em><br>模块文件名<br><em>module.loaded</em><br>模块是否加载完成<br><em>module.parent</em><br>调用该模块的模块，若无则为：undefined<br><em>module.children</em><br>当前模块要用到的其他模块，返回数组，若无则为：[]<br><em>module.paths</em><br>模块查找路径，返回数组类型。<br>require方法内部加载的优先级会用到，如repl加载查找的优先级：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[<span class="string">'/Users/later/works/galaxy/repl/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/works/galaxy/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/works/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/node_modules'</span>,</div><div class="line"> <span class="string">'/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/.node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/.node_libraries'</span>,</div><div class="line"> <span class="string">'/usr/local/lib/node'</span>]</div></pre></td></tr></table></figure>
-<h3 id="exports"><a href="#exports" class="headerlink" title="exports"></a>exports</h3><p>module.exports的引用<br>相当于模块默认有这个声明：<br><em>var exports = module.exports;</em></p>
-
-                    
-                        
-                    
-                    
-                        <p>
-                            <a href="/2017/08/15/node全局变量/#post-footer" class="postShorten-excerpt_link link">
-                                评论和共享
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
                         <a class="link-unstyled" href="/2017/08/08/node模块路径的那些事/">
                             node模块路径的那些事
                         </a>
@@ -350,6 +292,70 @@
                     
                         <p>
                             <a href="/2017/08/03/整理了一些不错的polyfill/#post-footer" class="postShorten-excerpt_link link">
+                                评论和共享
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title" itemprop="headline">
+                    
+                        <a class="link-unstyled" href="/2017/08/01/node全局对象|变量那点事/">
+                            node全局对象|变量那点事
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time itemprop="datePublished" datetime="2017-08-01T22:03:56+08:00">
+	
+		    2017-08-01
+    	
+    </time>
+    
+        <span>发布在 </span>
+        
+    <a class="category-link" href="/categories/node/">node</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content" itemprop="articleBody">
+                    <h3 id="global"><a href="#global" class="headerlink" title="global"></a>global</h3><p>首先global不是全局变量，因为是全局…（全局对象）<br>总之这货很大…-_-“, 别名GLOBAL，类似客户端的window。<br>模块间，变量在global上声明的方式，写了一个简单的demo：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 子模块：demoModule.js</span></div><div class="line">lll = <span class="string">'lll'</span>;</div><div class="line"><span class="keyword">var</span> aaa = <span class="string">'aaa'</span>;</div><div class="line">global.ttt = <span class="string">'ttt'</span>; <span class="comment">// 1.全局对象的属性；</span></div><div class="line"></div><div class="line">exports = &#123;&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 入口：main.js</span></div><div class="line"><span class="keyword">let</span> dm = <span class="built_in">require</span>(<span class="string">'./demoModule.js'</span>);  <span class="comment">// 引用模块</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> eee = <span class="string">'eee'</span>; <span class="comment">// 这里并不是最外层上下文</span></div><div class="line">rrr = <span class="string">'rrr'</span>; <span class="comment">// 2.隐式定义的变量（未定义直接赋值的变量）</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(global.lll);</div><div class="line"><span class="built_in">console</span>.log(global.aaa);</div><div class="line"><span class="built_in">console</span>.log(global.ttt);</div><div class="line"><span class="built_in">console</span>.log(global.eee);</div><div class="line"><span class="built_in">console</span>.log(global.rrr);</div><div class="line"></div><div class="line"><span class="comment">// 还有第三种情况：“3.在最外层定义的变量 ”  也是全局变量，下边会在REPL中测试这种情况</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> 运行以上脚本</span></div><div class="line">node main.js</div><div class="line"><span class="meta">#</span><span class="bash"> 结果: </span></div><div class="line">lll</div><div class="line">undefined</div><div class="line">ttt</div><div class="line">undefined</div><div class="line">rrr</div><div class="line"><span class="meta">#</span><span class="bash"> 对比下结果吧</span></div></pre></td></tr></table></figure>
+<p><em>结论：使用 <code>var</code> 定义变量，避免引入全局变量，因为全局变量会污染命名空间，提高代码耦合的风险。</em></p>
+<p><em>注意点：在正常的node编程中，所处的上下文一般是当前模块，所以不存在“3.在最外层定义的变量”</em><br><em>即使上边demo里，入口main.js也不是最外层的上下文</em></p>
+<p>在REPL中，做如下测试：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> var replTest = <span class="string">'replTest'</span>; global.replTest;</span></div><div class="line">'replTest'</div><div class="line"><span class="meta">&gt;</span><span class="bash"> .<span class="built_in">exit</span></span></div></pre></td></tr></table></figure>
+<p>可以看到在REPL中定义的变量是“最外层”上下文，隐式或者显示的定义变量都会定义到global对象上</p>
+<hr>
+<h3 id="dirname"><a href="#dirname" class="headerlink" title="__dirname"></a>__dirname</h3><p>文件所在的文件目录</p>
+<h3 id="filename"><a href="#filename" class="headerlink" title="__filename"></a>__filename</h3><p>文件名，全路径</p>
+<h3 id="process"><a href="#process" class="headerlink" title="process"></a>process</h3><p>当前进程在全局对象上的引用</p>
+<hr>
+<h3 id="module"><a href="#module" class="headerlink" title="module"></a>module</h3><p>模块引用<br><em>module.exports</em><br>模块输出出口，被读取地址<br><em>module.id</em><br>模块标识，一般是文件名<br><em>module.filename</em><br>模块文件名<br><em>module.loaded</em><br>模块是否加载完成<br><em>module.parent</em><br>调用该模块的模块，若无则为：undefined<br><em>module.children</em><br>当前模块要用到的其他模块，返回数组，若无则为：[]<br><em>module.paths</em><br>模块查找路径，返回数组类型。<br>require方法内部加载时，判定优先级会用到，如repl加载查找的优先级：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[<span class="string">'/Users/later/works/galaxy/repl/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/works/galaxy/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/works/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/node_modules'</span>,</div><div class="line"> <span class="string">'/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/.node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/.node_libraries'</span>,</div><div class="line"> <span class="string">'/usr/local/lib/node'</span>]</div></pre></td></tr></table></figure>
+<h3 id="exports"><a href="#exports" class="headerlink" title="exports"></a>exports</h3><p>module.exports的引用<br>相当于模块默认有这个声明：<br><em>var exports = module.exports;</em></p>
+
+                    
+                        
+                    
+                    
+                        <p>
+                            <a href="/2017/08/01/node全局对象|变量那点事/#post-footer" class="postShorten-excerpt_link link">
                                 评论和共享
                             </a>
                         </p>
@@ -649,6 +655,25 @@
                 <div class="media">
                     
                     <div class="media-body">
+                        <a class="link-unstyled" href="http://later.tech/2017/08/01/node全局对象|变量那点事/">
+                            <h3 class="media-heading">node全局对象|变量那点事</h3>
+                        </a>
+                        <span class="media-meta">
+                            <span class="media-date text-small">
+                                
+                                    2017年8月1日
+                                
+                            </span>
+                        </span>
+                        <div class="media-content hide-xs font-merryweather"></div>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <hr>
+                </div>
+                
+                <div class="media">
+                    
+                    <div class="media-body">
                         <a class="link-unstyled" href="http://later.tech/2017/08/03/整理了一些不错的polyfill/">
                             <h3 class="media-heading">整理的一些不错的polyfill</h3>
                         </a>
@@ -675,25 +700,6 @@
                             <span class="media-date text-small">
                                 
                                     2017年8月8日
-                                
-                            </span>
-                        </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
-                    </div>
-                    <div style="clear:both;"></div>
-                    <hr>
-                </div>
-                
-                <div class="media">
-                    
-                    <div class="media-body">
-                        <a class="link-unstyled" href="http://later.tech/2017/08/15/node全局变量/">
-                            <h3 class="media-heading">node全局变量</h3>
-                        </a>
-                        <span class="media-meta">
-                            <span class="media-date text-small">
-                                
-                                    2017年8月15日
                                 
                             </span>
                         </span>

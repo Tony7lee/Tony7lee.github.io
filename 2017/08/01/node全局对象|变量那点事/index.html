@@ -6,23 +6,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Later">
-    <title>归档: 2017/8 - Later</title>
+    <title>node全局对象|变量那点事 - Later</title>
     <meta name="author" content="Later">
     
     
         <link rel="icon" href="http://later.tech/assets/images/favicon16.ico">
     
     
-    <meta name="description" content="Blog of Later.">
+    <meta name="description" content="global首先global不是全局变量，因为是全局…（全局对象）总之这货很大…-_-“, 别名GLOBAL，类似客户端的window。模块间，变量在global上声明的方式，写了一个简单的demo： 123456// 子模块：demoModule.jslll = &apos;lll&apos;;var aaa = &apos;aaa&apos;;global.ttt = &apos;ttt&apos;; // 1.全局对象的属性；exports = &amp;#">
+<meta name="keywords" content="node,javascript">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Later">
-<meta property="og:url" content="http://later.tech/archives/2017/08/index.html">
+<meta property="og:title" content="node全局对象|变量那点事">
+<meta property="og:url" content="http://later.tech/2017/08/01/node全局对象|变量那点事/index.html">
 <meta property="og:site_name" content="Later">
-<meta property="og:description" content="Blog of Later.">
+<meta property="og:description" content="global首先global不是全局变量，因为是全局…（全局对象）总之这货很大…-_-“, 别名GLOBAL，类似客户端的window。模块间，变量在global上声明的方式，写了一个简单的demo： 123456// 子模块：demoModule.jslll = &apos;lll&apos;;var aaa = &apos;aaa&apos;;global.ttt = &apos;ttt&apos;; // 1.全局对象的属性；exports = &amp;#">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2017-09-05T07:45:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Later">
-<meta name="twitter:description" content="Blog of Later.">
+<meta name="twitter:title" content="node全局对象|变量那点事">
+<meta name="twitter:description" content="global首先global不是全局变量，因为是全局…（全局对象）总之这货很大…-_-“, 别名GLOBAL，类似客户端的window。模块间，变量在global上声明的方式，写了一个简单的demo： 123456// 子模块：demoModule.jslll = &apos;lll&apos;;var aaa = &apos;aaa&apos;;global.ttt = &apos;ttt&apos;; // 1.全局对象的属性；exports = &amp;#">
     
     
         
@@ -51,7 +53,7 @@
         
     
 
-<header id="header" data-behavior="1">
+<header id="header" data-behavior="4">
     <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
     <div class="header-title">
         <a class="header-title-link" href="/ ">Later</a>
@@ -75,7 +77,7 @@
         
     
 
-<nav id="sidebar" data-behavior="1">
+<nav id="sidebar" data-behavior="4">
     <div class="sidebar-container">
         
             <div class="sidebar-profile">
@@ -198,124 +200,22 @@
 </nav>
 
             
-            <div id="main" data-behavior="1"
+            <div id="main" data-behavior="4"
                  class="
                         hasCoverMetaIn
                         ">
                 
-    <section class="postShorten-group main-content-wrap">
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
     
     
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/2017/08/08/node模块路径的那些事/">
-                            node模块路径的那些事
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2017-08-08T22:03:56+08:00">
-	
-		    2017-08-08
-    	
-    </time>
+        <div class="post-header main-content-wrap text-left">
     
-        <span>发布在 </span>
-        
-    <a class="category-link" href="/categories/node/">node</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content" itemprop="articleBody">
-                    
-                    
-                        
-                    
-                    
-                        <p>
-                            <a href="/2017/08/08/node模块路径的那些事/#post-footer" class="postShorten-excerpt_link link">
-                                评论和共享
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
+        <h1 class="post-title" itemprop="headline">
+            node全局对象|变量那点事
+        </h1>
     
     
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/2017/08/03/整理了一些不错的polyfill/">
-                            整理的一些不错的polyfill
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2017-08-03T15:06:22+08:00">
-	
-		    2017-08-03
-    	
-    </time>
-    
-        <span>发布在 </span>
-        
-    <a class="category-link" href="/categories/javascript/">javascript</a>
-
-
-    
-</div>
-
-            </div>
-            
-                <div class="postShorten-content" itemprop="articleBody">
-                    <p>开发中不可避免的会处理各种兼容问题，这篇持续整理一些常见的api/es6的polyfill。</p>
-<h3 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create"></a>Object.create</h3><p>使用指定的原型对象和其属性创建了一个新的对象。<br><em>Object.create(proto, [ propertiesObject ])</em></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">Object</span>.create != <span class="string">'function'</span>) &#123;</div><div class="line">    <span class="comment">// Production steps of ECMA-262, Edition 5, 15.2.3.5</span></div><div class="line">    <span class="comment">// Reference: http://es5.github.io/#x15.2.3.5</span></div><div class="line">    <span class="built_in">Object</span>.create = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">//为了节省内存，使用一个共享的构造器</span></div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">Temp</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"></div><div class="line">        <span class="comment">// 使用 Object.prototype.hasOwnProperty 更安全的引用 </span></div><div class="line">        <span class="keyword">var</span> hasOwn = <span class="built_in">Object</span>.prototype.hasOwnProperty;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">O</span>) </span>&#123;</div><div class="line">            <span class="comment">// 1. 如果 O 不是 Object 或 null，抛出一个 TypeError 异常。</span></div><div class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> O != <span class="string">'object'</span>) &#123;</div><div class="line">                <span class="keyword">throw</span> <span class="built_in">TypeError</span>(<span class="string">'Object prototype may only be an Object or null'</span>);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="comment">// 2. 使创建的一个新的对象为 obj ，就和通过</span></div><div class="line">            <span class="comment">//    new Object() 表达式创建一个新对象一样，</span></div><div class="line">            <span class="comment">//    Object是标准内置的构造器名</span></div><div class="line">            <span class="comment">// 3. 设置 obj 的内部属性 [[Prototype]] 为 O。</span></div><div class="line">            Temp.prototype = O;</div><div class="line">            <span class="keyword">var</span> obj = <span class="keyword">new</span> Temp();</div><div class="line">            Temp.prototype = <span class="literal">null</span>; <span class="comment">// 不要保持一个 O 的杂散引用（a stray reference）...</span></div><div class="line"></div><div class="line">            <span class="comment">// 4. 如果存在参数 Properties ，而不是 undefined ，</span></div><div class="line">            <span class="comment">//    那么就把参数的自身属性添加到 obj 上，就像调用</span></div><div class="line">            <span class="comment">//    携带obj ，Properties两个参数的标准内置函数</span></div><div class="line">            <span class="comment">//    Object.defineProperties() 一样。</span></div><div class="line">            <span class="keyword">if</span> (<span class="built_in">arguments</span>.length &gt; <span class="number">1</span>) &#123;</div><div class="line">                <span class="comment">// Object.defineProperties does ToObject on its first argument.</span></div><div class="line">                <span class="keyword">var</span> Properties = <span class="built_in">Object</span>(<span class="built_in">arguments</span>[<span class="number">1</span>]);</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> prop <span class="keyword">in</span> Properties) &#123;</div><div class="line">                    <span class="keyword">if</span> (hasOwn.call(Properties, prop)) &#123;</div><div class="line">                        obj[prop] = Properties[prop];</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">              &#125;</div><div class="line"></div><div class="line">              <span class="comment">// 5. 返回 obj</span></div><div class="line">              <span class="keyword">return</span> obj;</div><div class="line">        &#125;;</div><div class="line">    &#125;)();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-
-                    
-                        
-                    
-                    
-                        <p>
-                            <a href="/2017/08/03/整理了一些不错的polyfill/#post-footer" class="postShorten-excerpt_link link">
-                                评论和共享
-                            </a>
-                        </p>
-                    
-                </div>
-            
-        </div>
-        
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/2017/08/01/node全局对象|变量那点事/">
-                            node全局对象|变量那点事
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
+        <div class="post-meta">
     <time itemprop="datePublished" datetime="2017-08-01T22:03:56+08:00">
 	
 		    2017-08-01
@@ -330,10 +230,12 @@
     
 </div>
 
-            </div>
-            
-                <div class="postShorten-content" itemprop="articleBody">
-                    <h3 id="global"><a href="#global" class="headerlink" title="global"></a>global</h3><p>首先global不是全局变量，因为是全局…（全局对象）<br>总之这货很大…-_-“, 别名GLOBAL，类似客户端的window。<br>模块间，变量在global上声明的方式，写了一个简单的demo：</p>
+    
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <h3 id="global"><a href="#global" class="headerlink" title="global"></a>global</h3><p>首先global不是全局变量，因为是全局…（全局对象）<br>总之这货很大…-_-“, 别名GLOBAL，类似客户端的window。<br>模块间，变量在global上声明的方式，写了一个简单的demo：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 子模块：demoModule.js</span></div><div class="line">lll = <span class="string">'lll'</span>;</div><div class="line"><span class="keyword">var</span> aaa = <span class="string">'aaa'</span>;</div><div class="line">global.ttt = <span class="string">'ttt'</span>; <span class="comment">// 1.全局对象的属性；</span></div><div class="line"></div><div class="line">exports = &#123;&#125;;</div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 入口：main.js</span></div><div class="line"><span class="keyword">let</span> dm = <span class="built_in">require</span>(<span class="string">'./demoModule.js'</span>);  <span class="comment">// 引用模块</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> eee = <span class="string">'eee'</span>; <span class="comment">// 这里并不是最外层上下文</span></div><div class="line">rrr = <span class="string">'rrr'</span>; <span class="comment">// 2.隐式定义的变量（未定义直接赋值的变量）</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(global.lll);</div><div class="line"><span class="built_in">console</span>.log(global.aaa);</div><div class="line"><span class="built_in">console</span>.log(global.ttt);</div><div class="line"><span class="built_in">console</span>.log(global.eee);</div><div class="line"><span class="built_in">console</span>.log(global.rrr);</div><div class="line"></div><div class="line"><span class="comment">// 还有第三种情况：“3.在最外层定义的变量 ”  也是全局变量，下边会在REPL中测试这种情况</span></div></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> 运行以上脚本</span></div><div class="line">node main.js</div><div class="line"><span class="meta">#</span><span class="bash"> 结果: </span></div><div class="line">lll</div><div class="line">undefined</div><div class="line">ttt</div><div class="line">undefined</div><div class="line">rrr</div><div class="line"><span class="meta">#</span><span class="bash"> 对比下结果吧</span></div></pre></td></tr></table></figure>
@@ -351,88 +253,73 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[<span class="string">'/Users/later/works/galaxy/repl/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/works/galaxy/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/works/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/node_modules'</span>,</div><div class="line"> <span class="string">'/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/.node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/.node_libraries'</span>,</div><div class="line"> <span class="string">'/usr/local/lib/node'</span>]</div></pre></td></tr></table></figure>
 <h3 id="exports"><a href="#exports" class="headerlink" title="exports"></a>exports</h3><p>module.exports的引用<br>相当于模块默认有这个声明：<br><em>var exports = module.exports;</em></p>
 
-                    
-                        
-                    
-                    
-                        <p>
-                            <a href="/2017/08/01/node全局对象|变量那点事/#post-footer" class="postShorten-excerpt_link link">
-                                评论和共享
-                            </a>
-                        </p>
-                    
-                </div>
             
         </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
         
-    </article>
-    
-    
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-        <div class="postShorten-wrap">
-            
-            <div class="postShorten-header">
-                <h1 class="postShorten-title" itemprop="headline">
-                    
-                        <a class="link-unstyled" href="/2017/08/01/关于这个博客/">
-                            关于这个博客
-                        </a>
-                    
-                </h1>
-                <div class="postShorten-meta">
-    <time itemprop="datePublished" datetime="2017-08-01T15:09:04+08:00">
-	
-		    2017-08-01
-    	
-    </time>
-    
-        <span>发布在 </span>
-        
-    <a class="category-link" href="/categories/生活/">生活</a>
-
-
-    
-</div>
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">标签</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/node-javascript/">node,javascript</a>
 
             </div>
+        
+        
+            <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/08/03/整理了一些不错的polyfill/"  data-tooltip="整理的一些不错的polyfill">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/08/01/关于这个博客/" data-tooltip="关于这个博客">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
             
-                <div class="postShorten-content" itemprop="articleBody">
-                    <p>首先，说下今年给自己的主题是<code>充满期待</code>。简单说，就是积极向上的生活，心中有所期待。</p>
-<p>在北京工作近三年，回头想想，工作、生活、性格的变化等，都收获颇多。其中难免磨灭一些东西，也会得到一些。辛酸，有，but主旋律一定是充满了快乐。摆几个不错的词：<strong>心存热爱</strong>，<strong>生如夏花</strong>；<strong>以梦为马</strong>，<strong>不负韶华</strong>。<br><img src="http://later.tech/pimg/2017/scenery/beau2.jpeg" alt="img"></p>
-<hr>
-<p>说正题</p>
-<p>博客呢，之前用的阿里云的php服务器，后来…就没后来了…被遗忘到关闭…-_-``</p>
-<p>现在重新开一个静态博客，希望在无聊的时候，可以记录一些觉得还不错的东西。</p>
-<p>做技术嘛，温故而知新，能有些沉淀，多些总结，一定没错（伸手、摆出机智状）(๑•́ ₃ •̀๑)</p>
-<p><img src="http://later.tech/pimg/2017/scenery/beau1.jpeg" alt="img"></p>
-<hr>
-<p><img src="http://later.tech/pimg/2017/scenery/skyway.jpeg" alt="img"><br>猜猜哪个是我(๑•́ ₃ •̀๑)</p>
-
-                    
-                        
-                    
-                    
-                        <p>
-                            <a href="/2017/08/01/关于这个博客/#post-footer" class="postShorten-excerpt_link link">
-                                评论和共享
-                            </a>
-                        </p>
-                    
-                </div>
             
-        </div>
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://later.tech/2017/08/01/node全局对象|变量那点事/">
+                    <i class="fa fa-weibo"></i>
+                </a>
+            </li>
         
-    </article>
-    
-    <div class="pagination-bar">
-    <ul class="pagination">
         
-        
-        <li class="pagination-number">第 1 页 共 1 页</li>
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
     </ul>
 </div>
 
-</section>
+
+        
+        
+            
+        
+    </div>
+</article>
 
 
 
@@ -443,6 +330,72 @@
 </footer>
 
             </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/08/03/整理了一些不错的polyfill/"  data-tooltip="整理的一些不错的polyfill">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/08/01/关于这个博客/" data-tooltip="关于这个博客">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        
+            
+            
+            <li class="post-action hide-xs">
+                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://later.tech/2017/08/01/node全局对象|变量那点事/">
+                    <i class="fa fa-weibo"></i>
+                </a>
+            </li>
+        
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <i id="btn-close-shareoptions" class="fa fa-close"></i>
+    <ul class="share-options">
+        
+            
+            
+            <li class="share-option">
+                <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://later.tech/2017/08/01/node全局对象|变量那点事/">
+                    <i class="fa fa-weibo"></i><span>分享到 Weibo</span>
+                </a>
+            </li>
+        
+    </ul>
+</div>
+
             
         </div>
         
@@ -615,6 +568,8 @@
         <!--SCRIPTS-->
 <script src="/assets/js/script-z5i4eagdh10d5e0bhbmw07jhtdbt6tgrqdp17571q5tukbl6yqb2vrxlnyqr.min.js"></script>
 <!--SCRIPTS END-->
+
+    
 
 
     </body>
