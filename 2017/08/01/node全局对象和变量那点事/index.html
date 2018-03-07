@@ -6,25 +6,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Later">
-    <title>ES6及其他新特性中需要注意的地方 - Later</title>
+    <title>node全局对象和变量那点事 - Later</title>
     <meta name="author" content="Later">
     
     
         <link rel="icon" href="http://later.tech/assets/images/favicon16.ico">
     
     
-    <meta name="description" content="首先明确几个概念和背景。ES6也就是我们说的ES2015，大多数高级浏览器都支持。ES7一般是我们所说的ES2016。但是也有人把ES7当做ES2017，也就是正在提议的标准（ES2017 Features）。不过官方应该是把ES2017当做ES8了。">
-<meta name="keywords" content="javascript,ECMAScript">
+    <meta name="description" content="global首先global不是全局变量，因为是全局…（全局对象）总之这货很大…-_-“, 别名GLOBAL，类似客户端的window。模块间，变量在global上声明的方式，写了一个简单的demo： 123456// 子模块：demoModule.jslll = &apos;lll&apos;;var aaa = &apos;aaa&apos;;global.ttt = &apos;ttt&apos;; // 1.全局对象的属性；exports = &amp;#">
+<meta name="keywords" content="node,javascript">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="ES6及其他新特性中需要注意的地方">
-<meta property="og:url" content="http://later.tech/2017/09/15/ES6及其他新特性中需要注意的地方/index.html">
+<meta property="og:title" content="node全局对象和变量那点事">
+<meta property="og:url" content="http://later.tech/2017/08/01/node全局对象和变量那点事/index.html">
 <meta property="og:site_name" content="Later">
-<meta property="og:description" content="首先明确几个概念和背景。ES6也就是我们说的ES2015，大多数高级浏览器都支持。ES7一般是我们所说的ES2016。但是也有人把ES7当做ES2017，也就是正在提议的标准（ES2017 Features）。不过官方应该是把ES2017当做ES8了。">
+<meta property="og:description" content="global首先global不是全局变量，因为是全局…（全局对象）总之这货很大…-_-“, 别名GLOBAL，类似客户端的window。模块间，变量在global上声明的方式，写了一个简单的demo： 123456// 子模块：demoModule.jslll = &apos;lll&apos;;var aaa = &apos;aaa&apos;;global.ttt = &apos;ttt&apos;; // 1.全局对象的属性；exports = &amp;#">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2018-03-07T09:19:38.556Z">
+<meta property="og:updated_time" content="2018-03-07T09:22:39.972Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ES6及其他新特性中需要注意的地方">
-<meta name="twitter:description" content="首先明确几个概念和背景。ES6也就是我们说的ES2015，大多数高级浏览器都支持。ES7一般是我们所说的ES2016。但是也有人把ES7当做ES2017，也就是正在提议的标准（ES2017 Features）。不过官方应该是把ES2017当做ES8了。">
+<meta name="twitter:title" content="node全局对象和变量那点事">
+<meta name="twitter:description" content="global首先global不是全局变量，因为是全局…（全局对象）总之这货很大…-_-“, 别名GLOBAL，类似客户端的window。模块间，变量在global上声明的方式，写了一个简单的demo： 123456// 子模块：demoModule.jslll = &apos;lll&apos;;var aaa = &apos;aaa&apos;;global.ttt = &apos;ttt&apos;; // 1.全局对象的属性；exports = &amp;#">
     
     
         
@@ -211,20 +211,20 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            ES6及其他新特性中需要注意的地方
+            node全局对象和变量那点事
         </h1>
     
     
         <div class="post-meta">
-    <time itemprop="datePublished" datetime="2017-09-15T14:06:22+08:00">
+    <time itemprop="datePublished" datetime="2017-08-01T22:03:56+08:00">
 	
-		    2017-09-15
+		    2017-08-01
     	
     </time>
     
         <span>发布在 </span>
         
-    <a class="category-link" href="/categories/ECMAScript/">ECMAScript</a>
+    <a class="category-link" href="/categories/node/">node</a>
 
 
     
@@ -235,15 +235,23 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>首先明确几个概念和背景。<br>ES6也就是我们说的ES2015，大多数高级浏览器都支持。<br>ES7一般是我们所说的ES2016。<br>但是也有人把ES7当做ES2017，也就是正在提议的标准（ES2017 Features）。不过官方应该是把ES2017当做ES8了。<br><a id="more"></a><br><strong>ECMAScript新特性的提出都要经历以下几个阶段。从一个阶段递交到下一个阶段必须要收到TC39委员会的全员同意。</strong></p>
-<p><code>Stage 0：strawman 稻草人</code><br>&nbsp;&nbsp;&nbsp;&nbsp;在该阶段可以自由的使用任意方式提交推动ECMAScript发展的想法。提议可以来自TC39成员单位，也可以是一个非成员单位， 但需要注册成为了TC39的贡献者。<br>&nbsp;&nbsp;&nbsp;&nbsp;条件：文档必须要在TC39会议上进行审核，然后将会被添加阶段0的建议页面中。</p>
-<p><code>Stage 1: proposal 提议</code><br>&nbsp;&nbsp;&nbsp;&nbsp;阶段1是对所提交特性的正式建议。<br>&nbsp;&nbsp;&nbsp;&nbsp;条件：必须要指派具体的人来负责该提议。该负责人或助理负责人必须是TC39的成员。该提议所解决的问题必须通过描述性的文档进行说明。 解决方法必须有例子，API，以及对语义和算法的讨论。最后，存在的潜在问题也必须要得到区分，例如与其他特性之间的关联，以及实现的难度。 Implementation-wise，polyfills和demos也都是必须的。<br>&nbsp;&nbsp;&nbsp;&nbsp;下一步：对于阶段1的提议的是否接受，TC39表明了其愿意检查、讨论和为提议做出贡献。继续向前，将会是提议的主要变化。</p>
-<p><code>Stage 2: draft 草案</code><br>&nbsp;&nbsp;&nbsp;&nbsp;阶段2是将会出现标准中的第一个版本。此时，将会与出现在标准中的最终特性是差不多的。<br>&nbsp;&nbsp;&nbsp;&nbsp;条件：此时建议必须要附加更规范化有关特性的语法和语意的说明（使用ECMAScript标准的正式语言）。 描述应该尽可能的完整，但也可以包含待办事项列表和占位符。该特性需要两个实验性的实现， 但其中一个可以在诸如Babel这样的转译器（transpiler）中。<br>&nbsp;&nbsp;&nbsp;&nbsp;下一步：从该改阶段只接收渐增的变化。</p>
-<p><code>Stage 3: canidate 候选</code><br>&nbsp;&nbsp;&nbsp;&nbsp;此时提议已经接近完成，只需要得到提议实现方的反馈，以及由用户来进一步推动。<br>&nbsp;&nbsp;&nbsp;&nbsp;条件：标准的文本必须是完备的。指定的审稿人（由TC39指派）和ECMAScript标准的编辑必须在该标准上签字。 必须要至少有两个符合标准的实现（可以不指定默认实现）。<br>&nbsp;&nbsp;&nbsp;&nbsp;下一步：至此之后，只有对实现和使用过程中出现的重大问题进行修正。</p>
-<p><code>Stage 4: finished 完成</code><br>&nbsp;&nbsp;&nbsp;&nbsp;提议将被包括到标准之中。<br>&nbsp;&nbsp;&nbsp;&nbsp;条件：在提议进入该阶段时需要满足以下的条件<br>Test 262验收测试（主要是用JavaScript代码编写的单元测试来验证语言特性）<br>两个通过测试的符合规范的装运实现（shipping implementations）<br>使用该实现的重要的实践经验<br>ECMAScript标准的编辑必须要签署该标准的文本<br>&nbsp;&nbsp;&nbsp;&nbsp;下一步：该提议会被尽可能快的纳入到ECMAScript标准中。当标准通过长达一年的时间获得通过后，该提议将正式作为标准的其一部分。</p>
+            <h3 id="global"><a href="#global" class="headerlink" title="global"></a>global</h3><p>首先global不是全局变量，因为是全局…（全局对象）<br>总之这货很大…-_-“, 别名GLOBAL，类似客户端的window。<br>模块间，变量在global上声明的方式，写了一个简单的demo：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 子模块：demoModule.js</span></div><div class="line">lll = <span class="string">'lll'</span>;</div><div class="line"><span class="keyword">var</span> aaa = <span class="string">'aaa'</span>;</div><div class="line">global.ttt = <span class="string">'ttt'</span>; <span class="comment">// 1.全局对象的属性；</span></div><div class="line"></div><div class="line">exports = &#123;&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 入口：main.js</span></div><div class="line"><span class="keyword">let</span> dm = <span class="built_in">require</span>(<span class="string">'./demoModule.js'</span>);  <span class="comment">// 引用模块</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> eee = <span class="string">'eee'</span>; <span class="comment">// 这里并不是最外层上下文</span></div><div class="line">rrr = <span class="string">'rrr'</span>; <span class="comment">// 2.隐式定义的变量（未定义直接赋值的变量）</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(global.lll);</div><div class="line"><span class="built_in">console</span>.log(global.aaa);</div><div class="line"><span class="built_in">console</span>.log(global.ttt);</div><div class="line"><span class="built_in">console</span>.log(global.eee);</div><div class="line"><span class="built_in">console</span>.log(global.rrr);</div><div class="line"></div><div class="line"><span class="comment">// 还有第三种情况：“3.在最外层定义的变量 ”  也是全局变量，下边会在REPL中测试这种情况</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 运行以上脚本</div><div class="line">node main.js</div><div class="line"><span class="meta">#</span> 结果: </div><div class="line">lll</div><div class="line">undefined</div><div class="line">ttt</div><div class="line">undefined</div><div class="line">rrr</div><div class="line"><span class="meta">#</span> 对比下结果吧</div></pre></td></tr></table></figure>
+<p><em>结论：使用 <code>var</code> 定义变量，避免引入全局变量，因为全局变量会污染命名空间，提高代码耦合的风险。</em></p>
+<p><em>注意点：在正常的node编程中，所处的上下文一般是当前模块，所以不存在“3.在最外层定义的变量”</em><br><em>即使上边demo里，入口main.js也不是最外层的上下文</em></p>
+<p>在REPL中，做如下测试：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span> var replTest = 'replTest'; global.replTest;</div><div class="line">'replTest'</div><div class="line"><span class="meta">&gt;</span> .exit</div></pre></td></tr></table></figure>
+<p>可以看到在REPL中定义的变量是“最外层”上下文，隐式或者显示的定义变量都会定义到global对象上</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h3 id="dirname"><a href="#dirname" class="headerlink" title="__dirname"></a>__dirname</h3><p>文件所在的文件目录</p>
+<h3 id="filename"><a href="#filename" class="headerlink" title="__filename"></a>__filename</h3><p>文件名，全路径</p>
+<h3 id="process"><a href="#process" class="headerlink" title="process"></a>process</h3><p>当前进程在全局对象上的引用</p>
 <hr>
-<p>下边对一些新特性的注意点做一些记录：</p>
-<h3 id="对于ES6新增的Symbol数据类型，访问对象属性有些地方要注意"><a href="#对于ES6新增的Symbol数据类型，访问对象属性有些地方要注意" class="headerlink" title="对于ES6新增的Symbol数据类型，访问对象属性有些地方要注意:"></a>对于ES6新增的Symbol数据类型，访问对象属性有些地方要注意:</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> obj = &#123;<span class="attr">c</span>: <span class="string">'c'</span>&#125;;</div><div class="line"><span class="keyword">let</span> a = <span class="built_in">Symbol</span>(<span class="string">'a'</span>);</div><div class="line"><span class="keyword">let</span> b = <span class="built_in">Symbol</span>(<span class="string">'b'</span>);</div><div class="line"></div><div class="line">obj[a] = <span class="string">'Hello'</span>;</div><div class="line">obj[b] = <span class="string">'World'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> objectSymbols = <span class="built_in">Object</span>.getOwnPropertySymbols(obj);</div><div class="line"><span class="comment">// [Symbol(a), Symbol(b)]</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> objectNames = <span class="built_in">Object</span>.getOwnPropertyNames(obj);</div><div class="line"><span class="comment">// ["c"]</span></div></pre></td></tr></table></figure>
+<h3 id="module"><a href="#module" class="headerlink" title="module"></a>module</h3><p>模块引用<br><em>module.exports</em><br>模块输出出口，被读取地址<br><em>module.id</em><br>模块标识，一般是文件名<br><em>module.filename</em><br>模块文件名<br><em>module.loaded</em><br>模块是否加载完成<br><em>module.parent</em><br>调用该模块的模块，若无则为：undefined<br><em>module.children</em><br>当前模块要用到的其他模块，返回数组，若无则为：[]<br><em>module.paths</em><br>模块查找路径，返回数组类型。<br>require方法内部加载时，判定优先级会用到，如repl加载查找的优先级：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[<span class="string">'/Users/later/works/galaxy/repl/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/works/galaxy/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/works/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/node_modules'</span>,</div><div class="line"> <span class="string">'/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/.node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/.node_libraries'</span>,</div><div class="line"> <span class="string">'/usr/local/lib/node'</span>]</div></pre></td></tr></table></figure>
+<h3 id="exports"><a href="#exports" class="headerlink" title="exports"></a>exports</h3><p>module.exports的引用<br>相当于模块默认有这个声明：<br><em>var exports = module.exports;</em></p>
+
             
         </div>
     </div>
@@ -252,7 +260,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">标签</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/javascript-ECMAScript/">javascript,ECMAScript</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/node-javascript/">node,javascript</a>
 
             </div>
         
@@ -262,7 +270,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/09/30/node模块路径的那些事/"  data-tooltip="node模块缓存那些事">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/08/03/整理了一些不错的polyfill/"  data-tooltip="整理的一些不错的polyfill">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -270,7 +278,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/08/03/整理了一些不错的polyfill/" data-tooltip="整理的一些不错的polyfill">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/08/01/关于这个博客/" data-tooltip="关于这个博客">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -288,7 +296,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://later.tech/2017/09/15/ES6及其他新特性中需要注意的地方/">
+                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://later.tech/2017/08/01/node全局对象和变量那点事/">
                     <i class="fa fa-weibo"></i>
                 </a>
             </li>
@@ -328,7 +336,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/09/30/node模块路径的那些事/"  data-tooltip="node模块缓存那些事">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/08/03/整理了一些不错的polyfill/"  data-tooltip="整理的一些不错的polyfill">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -336,7 +344,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/08/03/整理了一些不错的polyfill/" data-tooltip="整理的一些不错的polyfill">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/08/01/关于这个博客/" data-tooltip="关于这个博客">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                     <i class="fa fa-angle-right"></i>
@@ -354,7 +362,7 @@
             
             
             <li class="post-action hide-xs">
-                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://later.tech/2017/09/15/ES6及其他新特性中需要注意的地方/">
+                <a class="post-action-btn btn btn--default" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://later.tech/2017/08/01/node全局对象和变量那点事/">
                     <i class="fa fa-weibo"></i>
                 </a>
             </li>
@@ -379,7 +387,7 @@
             
             
             <li class="share-option">
-                <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://later.tech/2017/09/15/ES6及其他新特性中需要注意的地方/">
+                <a class="share-option-btn" target="new" href="http://service.weibo.com/share/share.php?&amp;title=http://later.tech/2017/08/01/node全局对象和变量那点事/">
                     <i class="fa fa-weibo"></i><span>分享到 Weibo</span>
                 </a>
             </li>

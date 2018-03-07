@@ -268,7 +268,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/08/01/node全局对象|变量那点事/"  data-tooltip="node全局对象|变量那点事">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/08/01/node全局对象和变量那点事/"  data-tooltip="node全局对象和变量那点事">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -334,7 +334,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/08/01/node全局对象|变量那点事/"  data-tooltip="node全局对象|变量那点事">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2017/08/01/node全局对象和变量那点事/"  data-tooltip="node全局对象和变量那点事">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
@@ -493,8 +493,8 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://later.tech/2017/08/01/node全局对象|变量那点事/">
-                            <h3 class="media-heading">node全局对象|变量那点事</h3>
+                        <a class="link-unstyled" href="http://later.tech/2017/08/01/node全局对象和变量那点事/">
+                            <h3 class="media-heading">node全局对象和变量那点事</h3>
                         </a>
                         <span class="media-meta">
                             <span class="media-date text-small">
@@ -503,7 +503,16 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><h3 id="global"><a href="#global" class="headerlink" title="global"></a>global</h3><p>首先global不是全局变量，因为是全局…（全局对象）<br>总之这货很大…-_-“, 别名GLOBAL，类似客户端的window。<br>模块间，变量在global上声明的方式，写了一个简单的demo：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 子模块：demoModule.js</span></div><div class="line">lll = <span class="string">'lll'</span>;</div><div class="line"><span class="keyword">var</span> aaa = <span class="string">'aaa'</span>;</div><div class="line">global.ttt = <span class="string">'ttt'</span>; <span class="comment">// 1.全局对象的属性；</span></div><div class="line"></div><div class="line">exports = &#123;&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 入口：main.js</span></div><div class="line"><span class="keyword">let</span> dm = <span class="built_in">require</span>(<span class="string">'./demoModule.js'</span>);  <span class="comment">// 引用模块</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> eee = <span class="string">'eee'</span>; <span class="comment">// 这里并不是最外层上下文</span></div><div class="line">rrr = <span class="string">'rrr'</span>; <span class="comment">// 2.隐式定义的变量（未定义直接赋值的变量）</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(global.lll);</div><div class="line"><span class="built_in">console</span>.log(global.aaa);</div><div class="line"><span class="built_in">console</span>.log(global.ttt);</div><div class="line"><span class="built_in">console</span>.log(global.eee);</div><div class="line"><span class="built_in">console</span>.log(global.rrr);</div><div class="line"></div><div class="line"><span class="comment">// 还有第三种情况：“3.在最外层定义的变量 ”  也是全局变量，下边会在REPL中测试这种情况</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 运行以上脚本</div><div class="line">node main.js</div><div class="line"><span class="meta">#</span> 结果: </div><div class="line">lll</div><div class="line">undefined</div><div class="line">ttt</div><div class="line">undefined</div><div class="line">rrr</div><div class="line"><span class="meta">#</span> 对比下结果吧</div></pre></td></tr></table></figure>
+<p><em>结论：使用 <code>var</code> 定义变量，避免引入全局变量，因为全局变量会污染命名空间，提高代码耦合的风险。</em></p>
+<p><em>注意点：在正常的node编程中，所处的上下文一般是当前模块，所以不存在“3.在最外层定义的变量”</em><br><em>即使上边demo里，入口main.js也不是最外层的上下文</em></p>
+<p>在REPL中，做如下测试：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span> var replTest = 'replTest'; global.replTest;</div><div class="line">'replTest'</div><div class="line"><span class="meta">&gt;</span> .exit</div></pre></td></tr></table></figure>
+<p>可以看到在REPL中定义的变量是“最外层”上下文，隐式或者显示的定义变量都会定义到global对象上</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -522,7 +531,8 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><p>开发中不可避免的会处理各种兼容问题，这篇持续整理一些常见的api/es6的polyfill。</p>
+<h3 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create"></a>Object.create</h3><p>使用指定的原型对象和其属性创建了一个新的对象。<br><em>Object.create(proto, [ propertiesObject ])</em><br></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -541,7 +551,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><p>首先明确几个概念和背景。<br>ES6也就是我们说的ES2015，大多数高级浏览器都支持。<br>ES7一般是我们所说的ES2016。<br>但是也有人把ES7当做ES2017，也就是正在提议的标准（ES2017 Features）。不过官方应该是把ES2017当做ES8了。<br></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>

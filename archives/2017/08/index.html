@@ -206,7 +206,7 @@
     <section class="postShorten-group main-content-wrap">
     
     
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
         <div class="postShorten-wrap">
             
             <div class="postShorten-header">
@@ -234,24 +234,14 @@
 
             </div>
             
-                <div class="postShorten-content" itemprop="articleBody">
+                <div class="postShorten-excerpt" itemprop="articleBody">
                     <p>开发中不可避免的会处理各种兼容问题，这篇持续整理一些常见的api/es6的polyfill。</p>
-<h3 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create"></a>Object.create</h3><p>使用指定的原型对象和其属性创建了一个新的对象。<br><em>Object.create(proto, [ propertiesObject ])</em></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">Object</span>.create != <span class="string">'function'</span>) &#123;</div><div class="line">    <span class="comment">// Production steps of ECMA-262, Edition 5, 15.2.3.5</span></div><div class="line">    <span class="comment">// Reference: http://es5.github.io/#x15.2.3.5</span></div><div class="line">    <span class="built_in">Object</span>.create = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">//为了节省内存，使用一个共享的构造器</span></div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">Temp</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"></div><div class="line">        <span class="comment">// 使用 Object.prototype.hasOwnProperty 更安全的引用 </span></div><div class="line">        <span class="keyword">var</span> hasOwn = <span class="built_in">Object</span>.prototype.hasOwnProperty;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">O</span>) </span>&#123;</div><div class="line">            <span class="comment">// 1. 如果 O 不是 Object 或 null，抛出一个 TypeError 异常。</span></div><div class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> O != <span class="string">'object'</span>) &#123;</div><div class="line">                <span class="keyword">throw</span> <span class="built_in">TypeError</span>(<span class="string">'Object prototype may only be an Object or null'</span>);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="comment">// 2. 使创建的一个新的对象为 obj ，就和通过</span></div><div class="line">            <span class="comment">//    new Object() 表达式创建一个新对象一样，</span></div><div class="line">            <span class="comment">//    Object是标准内置的构造器名</span></div><div class="line">            <span class="comment">// 3. 设置 obj 的内部属性 [[Prototype]] 为 O。</span></div><div class="line">            Temp.prototype = O;</div><div class="line">            <span class="keyword">var</span> obj = <span class="keyword">new</span> Temp();</div><div class="line">            Temp.prototype = <span class="literal">null</span>; <span class="comment">// 不要保持一个 O 的杂散引用（a stray reference）...</span></div><div class="line"></div><div class="line">            <span class="comment">// 4. 如果存在参数 Properties ，而不是 undefined ，</span></div><div class="line">            <span class="comment">//    那么就把参数的自身属性添加到 obj 上，就像调用</span></div><div class="line">            <span class="comment">//    携带obj ，Properties两个参数的标准内置函数</span></div><div class="line">            <span class="comment">//    Object.defineProperties() 一样。</span></div><div class="line">            <span class="keyword">if</span> (<span class="built_in">arguments</span>.length &gt; <span class="number">1</span>) &#123;</div><div class="line">                <span class="comment">// Object.defineProperties does ToObject on its first argument.</span></div><div class="line">                <span class="keyword">var</span> Properties = <span class="built_in">Object</span>(<span class="built_in">arguments</span>[<span class="number">1</span>]);</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> prop <span class="keyword">in</span> Properties) &#123;</div><div class="line">                    <span class="keyword">if</span> (hasOwn.call(Properties, prop)) &#123;</div><div class="line">                        obj[prop] = Properties[prop];</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">              &#125;</div><div class="line"></div><div class="line">              <span class="comment">// 5. 返回 obj</span></div><div class="line">              <span class="keyword">return</span> obj;</div><div class="line">        &#125;;</div><div class="line">    &#125;)();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-<h3 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign"></a>Object.assign</h3><p>用于将所有可枚举的属性的值从一个或多个源对象复制到目标对象。它将返回目标对象。<br><em>Object.assign(target, …sources)</em></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">Object</span>.assign != <span class="string">'function'</span>) &#123;</div><div class="line">  <span class="built_in">Object</span>.assign = <span class="function"><span class="keyword">function</span>(<span class="params">target</span>) </span>&#123;</div><div class="line"><span class="meta">    'use strict'</span>;</div><div class="line">    <span class="keyword">if</span> (target == <span class="literal">null</span>) &#123;</div><div class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'Cannot convert undefined or null to object'</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    target = <span class="built_in">Object</span>(target);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> index = <span class="number">1</span>; index &lt; <span class="built_in">arguments</span>.length; index++) &#123;</div><div class="line">      <span class="keyword">var</span> source = <span class="built_in">arguments</span>[index];</div><div class="line">      <span class="keyword">if</span> (source != <span class="literal">null</span>) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> source) &#123;</div><div class="line">          <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.hasOwnProperty.call(source, key)) &#123;</div><div class="line">            target[key] = source[key];</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> target;</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<hr>
-
+<h3 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create"></a>Object.create</h3><p>使用指定的原型对象和其属性创建了一个新的对象。<br><em>Object.create(proto, [ propertiesObject ])</em><br>
                     
+                        <a href="/2017/08/03/整理了一些不错的polyfill/" class="postShorten-excerpt_link link">
+                            阅读全文
+                        </a>
                         
-                    
-                    
-                        <p>
-                            <a href="/2017/08/03/整理了一些不错的polyfill/#post-footer" class="postShorten-excerpt_link link">
-                                评论和共享
-                            </a>
-                        </p>
                     
                 </div>
             
@@ -260,14 +250,14 @@
     </article>
     
     
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
         <div class="postShorten-wrap">
             
             <div class="postShorten-header">
                 <h1 class="postShorten-title" itemprop="headline">
                     
-                        <a class="link-unstyled" href="/2017/08/01/node全局对象|变量那点事/">
-                            node全局对象|变量那点事
+                        <a class="link-unstyled" href="/2017/08/01/node全局对象和变量那点事/">
+                            node全局对象和变量那点事
                         </a>
                     
                 </h1>
@@ -288,7 +278,7 @@
 
             </div>
             
-                <div class="postShorten-content" itemprop="articleBody">
+                <div class="postShorten-excerpt" itemprop="articleBody">
                     <h3 id="global"><a href="#global" class="headerlink" title="global"></a>global</h3><p>首先global不是全局变量，因为是全局…（全局对象）<br>总之这货很大…-_-“, 别名GLOBAL，类似客户端的window。<br>模块间，变量在global上声明的方式，写了一个简单的demo：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 子模块：demoModule.js</span></div><div class="line">lll = <span class="string">'lll'</span>;</div><div class="line"><span class="keyword">var</span> aaa = <span class="string">'aaa'</span>;</div><div class="line">global.ttt = <span class="string">'ttt'</span>; <span class="comment">// 1.全局对象的属性；</span></div><div class="line"></div><div class="line">exports = &#123;&#125;;</div></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 入口：main.js</span></div><div class="line"><span class="keyword">let</span> dm = <span class="built_in">require</span>(<span class="string">'./demoModule.js'</span>);  <span class="comment">// 引用模块</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> eee = <span class="string">'eee'</span>; <span class="comment">// 这里并不是最外层上下文</span></div><div class="line">rrr = <span class="string">'rrr'</span>; <span class="comment">// 2.隐式定义的变量（未定义直接赋值的变量）</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(global.lll);</div><div class="line"><span class="built_in">console</span>.log(global.aaa);</div><div class="line"><span class="built_in">console</span>.log(global.ttt);</div><div class="line"><span class="built_in">console</span>.log(global.eee);</div><div class="line"><span class="built_in">console</span>.log(global.rrr);</div><div class="line"></div><div class="line"><span class="comment">// 还有第三种情况：“3.在最外层定义的变量 ”  也是全局变量，下边会在REPL中测试这种情况</span></div></pre></td></tr></table></figure>
@@ -298,24 +288,12 @@
 <p>在REPL中，做如下测试：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span> var replTest = 'replTest'; global.replTest;</div><div class="line">'replTest'</div><div class="line"><span class="meta">&gt;</span> .exit</div></pre></td></tr></table></figure>
 <p>可以看到在REPL中定义的变量是“最外层”上下文，隐式或者显示的定义变量都会定义到global对象上</p>
-<hr>
-<h3 id="dirname"><a href="#dirname" class="headerlink" title="__dirname"></a>__dirname</h3><p>文件所在的文件目录</p>
-<h3 id="filename"><a href="#filename" class="headerlink" title="__filename"></a>__filename</h3><p>文件名，全路径</p>
-<h3 id="process"><a href="#process" class="headerlink" title="process"></a>process</h3><p>当前进程在全局对象上的引用</p>
-<hr>
-<h3 id="module"><a href="#module" class="headerlink" title="module"></a>module</h3><p>模块引用<br><em>module.exports</em><br>模块输出出口，被读取地址<br><em>module.id</em><br>模块标识，一般是文件名<br><em>module.filename</em><br>模块文件名<br><em>module.loaded</em><br>模块是否加载完成<br><em>module.parent</em><br>调用该模块的模块，若无则为：undefined<br><em>module.children</em><br>当前模块要用到的其他模块，返回数组，若无则为：[]<br><em>module.paths</em><br>模块查找路径，返回数组类型。<br>require方法内部加载时，判定优先级会用到，如repl加载查找的优先级：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[<span class="string">'/Users/later/works/galaxy/repl/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/works/galaxy/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/works/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/node_modules'</span>,</div><div class="line"> <span class="string">'/node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/.node_modules'</span>,</div><div class="line"> <span class="string">'/Users/later/.node_libraries'</span>,</div><div class="line"> <span class="string">'/usr/local/lib/node'</span>]</div></pre></td></tr></table></figure>
-<h3 id="exports"><a href="#exports" class="headerlink" title="exports"></a>exports</h3><p>module.exports的引用<br>相当于模块默认有这个声明：<br><em>var exports = module.exports;</em></p>
-
+<h2 id=""><a href="#" class="headerlink" title=""></a>
                     
+                        <a href="/2017/08/01/node全局对象和变量那点事/" class="postShorten-excerpt_link link">
+                            阅读全文
+                        </a>
                         
-                    
-                    
-                        <p>
-                            <a href="/2017/08/01/node全局对象|变量那点事/#post-footer" class="postShorten-excerpt_link link">
-                                评论和共享
-                            </a>
-                        </p>
                     
                 </div>
             
@@ -499,8 +477,8 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://later.tech/2017/08/01/node全局对象|变量那点事/">
-                            <h3 class="media-heading">node全局对象|变量那点事</h3>
+                        <a class="link-unstyled" href="http://later.tech/2017/08/01/node全局对象和变量那点事/">
+                            <h3 class="media-heading">node全局对象和变量那点事</h3>
                         </a>
                         <span class="media-meta">
                             <span class="media-date text-small">
@@ -509,7 +487,16 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><h3 id="global"><a href="#global" class="headerlink" title="global"></a>global</h3><p>首先global不是全局变量，因为是全局…（全局对象）<br>总之这货很大…-_-“, 别名GLOBAL，类似客户端的window。<br>模块间，变量在global上声明的方式，写了一个简单的demo：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 子模块：demoModule.js</span></div><div class="line">lll = <span class="string">'lll'</span>;</div><div class="line"><span class="keyword">var</span> aaa = <span class="string">'aaa'</span>;</div><div class="line">global.ttt = <span class="string">'ttt'</span>; <span class="comment">// 1.全局对象的属性；</span></div><div class="line"></div><div class="line">exports = &#123;&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 入口：main.js</span></div><div class="line"><span class="keyword">let</span> dm = <span class="built_in">require</span>(<span class="string">'./demoModule.js'</span>);  <span class="comment">// 引用模块</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> eee = <span class="string">'eee'</span>; <span class="comment">// 这里并不是最外层上下文</span></div><div class="line">rrr = <span class="string">'rrr'</span>; <span class="comment">// 2.隐式定义的变量（未定义直接赋值的变量）</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(global.lll);</div><div class="line"><span class="built_in">console</span>.log(global.aaa);</div><div class="line"><span class="built_in">console</span>.log(global.ttt);</div><div class="line"><span class="built_in">console</span>.log(global.eee);</div><div class="line"><span class="built_in">console</span>.log(global.rrr);</div><div class="line"></div><div class="line"><span class="comment">// 还有第三种情况：“3.在最外层定义的变量 ”  也是全局变量，下边会在REPL中测试这种情况</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 运行以上脚本</div><div class="line">node main.js</div><div class="line"><span class="meta">#</span> 结果: </div><div class="line">lll</div><div class="line">undefined</div><div class="line">ttt</div><div class="line">undefined</div><div class="line">rrr</div><div class="line"><span class="meta">#</span> 对比下结果吧</div></pre></td></tr></table></figure>
+<p><em>结论：使用 <code>var</code> 定义变量，避免引入全局变量，因为全局变量会污染命名空间，提高代码耦合的风险。</em></p>
+<p><em>注意点：在正常的node编程中，所处的上下文一般是当前模块，所以不存在“3.在最外层定义的变量”</em><br><em>即使上边demo里，入口main.js也不是最外层的上下文</em></p>
+<p>在REPL中，做如下测试：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span> var replTest = 'replTest'; global.replTest;</div><div class="line">'replTest'</div><div class="line"><span class="meta">&gt;</span> .exit</div></pre></td></tr></table></figure>
+<p>可以看到在REPL中定义的变量是“最外层”上下文，隐式或者显示的定义变量都会定义到global对象上</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -528,7 +515,8 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><p>开发中不可避免的会处理各种兼容问题，这篇持续整理一些常见的api/es6的polyfill。</p>
+<h3 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create"></a>Object.create</h3><p>使用指定的原型对象和其属性创建了一个新的对象。<br><em>Object.create(proto, [ propertiesObject ])</em><br></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -547,7 +535,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><p>首先明确几个概念和背景。<br>ES6也就是我们说的ES2015，大多数高级浏览器都支持。<br>ES7一般是我们所说的ES2016。<br>但是也有人把ES7当做ES2017，也就是正在提议的标准（ES2017 Features）。不过官方应该是把ES2017当做ES8了。<br></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>

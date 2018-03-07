@@ -206,7 +206,7 @@
     <section class="postShorten-group main-content-wrap">
     
     
-    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+    <article class="postShorten postShorten--thumbnailimg-right" itemscope itemType="http://schema.org/BlogPosting">
         <div class="postShorten-wrap">
             
             <div class="postShorten-header">
@@ -234,26 +234,13 @@
 
             </div>
             
-                <div class="postShorten-content" itemprop="articleBody">
-                    <p>首先明确几个概念和背景。<br>ES6也就是我们说的ES2015，大多数高级浏览器都支持。<br>ES7一般是我们所说的ES2016。<br>但是也有人把ES7当做ES2017，也就是正在提议的标准（ES2017 Features）。不过官方应该是把ES2017当做ES8了。</p>
-<p><strong>ECMAScript新特性的提出都要经历以下几个阶段。从一个阶段递交到下一个阶段必须要收到TC39委员会的全员同意。</strong></p>
-<p><code>Stage 0：strawman 稻草人</code><br>&nbsp;&nbsp;&nbsp;&nbsp;在该阶段可以自由的使用任意方式提交推动ECMAScript发展的想法。提议可以来自TC39成员单位，也可以是一个非成员单位， 但需要注册成为了TC39的贡献者。<br>&nbsp;&nbsp;&nbsp;&nbsp;条件：文档必须要在TC39会议上进行审核，然后将会被添加阶段0的建议页面中。</p>
-<p><code>Stage 1: proposal 提议</code><br>&nbsp;&nbsp;&nbsp;&nbsp;阶段1是对所提交特性的正式建议。<br>&nbsp;&nbsp;&nbsp;&nbsp;条件：必须要指派具体的人来负责该提议。该负责人或助理负责人必须是TC39的成员。该提议所解决的问题必须通过描述性的文档进行说明。 解决方法必须有例子，API，以及对语义和算法的讨论。最后，存在的潜在问题也必须要得到区分，例如与其他特性之间的关联，以及实现的难度。 Implementation-wise，polyfills和demos也都是必须的。<br>&nbsp;&nbsp;&nbsp;&nbsp;下一步：对于阶段1的提议的是否接受，TC39表明了其愿意检查、讨论和为提议做出贡献。继续向前，将会是提议的主要变化。</p>
-<p><code>Stage 2: draft 草案</code><br>&nbsp;&nbsp;&nbsp;&nbsp;阶段2是将会出现标准中的第一个版本。此时，将会与出现在标准中的最终特性是差不多的。<br>&nbsp;&nbsp;&nbsp;&nbsp;条件：此时建议必须要附加更规范化有关特性的语法和语意的说明（使用ECMAScript标准的正式语言）。 描述应该尽可能的完整，但也可以包含待办事项列表和占位符。该特性需要两个实验性的实现， 但其中一个可以在诸如Babel这样的转译器（transpiler）中。<br>&nbsp;&nbsp;&nbsp;&nbsp;下一步：从该改阶段只接收渐增的变化。</p>
-<p><code>Stage 3: canidate 候选</code><br>&nbsp;&nbsp;&nbsp;&nbsp;此时提议已经接近完成，只需要得到提议实现方的反馈，以及由用户来进一步推动。<br>&nbsp;&nbsp;&nbsp;&nbsp;条件：标准的文本必须是完备的。指定的审稿人（由TC39指派）和ECMAScript标准的编辑必须在该标准上签字。 必须要至少有两个符合标准的实现（可以不指定默认实现）。<br>&nbsp;&nbsp;&nbsp;&nbsp;下一步：至此之后，只有对实现和使用过程中出现的重大问题进行修正。</p>
-<p><code>Stage 4: finished 完成</code><br>&nbsp;&nbsp;&nbsp;&nbsp;提议将被包括到标准之中。<br>&nbsp;&nbsp;&nbsp;&nbsp;条件：在提议进入该阶段时需要满足以下的条件<br>Test 262验收测试（主要是用JavaScript代码编写的单元测试来验证语言特性）<br>两个通过测试的符合规范的装运实现（shipping implementations）<br>使用该实现的重要的实践经验<br>ECMAScript标准的编辑必须要签署该标准的文本<br>&nbsp;&nbsp;&nbsp;&nbsp;下一步：该提议会被尽可能快的纳入到ECMAScript标准中。当标准通过长达一年的时间获得通过后，该提议将正式作为标准的其一部分。</p>
-<hr>
-<p>下边对一些新特性的注意点做一些记录：</p>
-<h3 id="对于ES6新增的Symbol数据类型，访问对象属性有些地方要注意"><a href="#对于ES6新增的Symbol数据类型，访问对象属性有些地方要注意" class="headerlink" title="对于ES6新增的Symbol数据类型，访问对象属性有些地方要注意:"></a>对于ES6新增的Symbol数据类型，访问对象属性有些地方要注意:</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> obj = &#123;<span class="attr">c</span>: <span class="string">'c'</span>&#125;;</div><div class="line"><span class="keyword">let</span> a = <span class="built_in">Symbol</span>(<span class="string">'a'</span>);</div><div class="line"><span class="keyword">let</span> b = <span class="built_in">Symbol</span>(<span class="string">'b'</span>);</div><div class="line"></div><div class="line">obj[a] = <span class="string">'Hello'</span>;</div><div class="line">obj[b] = <span class="string">'World'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> objectSymbols = <span class="built_in">Object</span>.getOwnPropertySymbols(obj);</div><div class="line"><span class="comment">// [Symbol(a), Symbol(b)]</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> objectNames = <span class="built_in">Object</span>.getOwnPropertyNames(obj);</div><div class="line"><span class="comment">// ["c"]</span></div></pre></td></tr></table></figure>
+                <div class="postShorten-excerpt" itemprop="articleBody">
+                    <p>首先明确几个概念和背景。<br>ES6也就是我们说的ES2015，大多数高级浏览器都支持。<br>ES7一般是我们所说的ES2016。<br>但是也有人把ES7当做ES2017，也就是正在提议的标准（ES2017 Features）。不过官方应该是把ES2017当做ES8了。<br>
                     
+                        <a href="/2017/09/15/ES6及其他新特性中需要注意的地方/" class="postShorten-excerpt_link link">
+                            阅读全文
+                        </a>
                         
-                    
-                    
-                        <p>
-                            <a href="/2017/09/15/ES6及其他新特性中需要注意的地方/#post-footer" class="postShorten-excerpt_link link">
-                                评论和共享
-                            </a>
-                        </p>
                     
                 </div>
             
@@ -380,8 +367,8 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://later.tech/2017/08/01/node全局对象|变量那点事/">
-                            <h3 class="media-heading">node全局对象|变量那点事</h3>
+                        <a class="link-unstyled" href="http://later.tech/2017/08/01/node全局对象和变量那点事/">
+                            <h3 class="media-heading">node全局对象和变量那点事</h3>
                         </a>
                         <span class="media-meta">
                             <span class="media-date text-small">
@@ -390,7 +377,16 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><h3 id="global"><a href="#global" class="headerlink" title="global"></a>global</h3><p>首先global不是全局变量，因为是全局…（全局对象）<br>总之这货很大…-_-“, 别名GLOBAL，类似客户端的window。<br>模块间，变量在global上声明的方式，写了一个简单的demo：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 子模块：demoModule.js</span></div><div class="line">lll = <span class="string">'lll'</span>;</div><div class="line"><span class="keyword">var</span> aaa = <span class="string">'aaa'</span>;</div><div class="line">global.ttt = <span class="string">'ttt'</span>; <span class="comment">// 1.全局对象的属性；</span></div><div class="line"></div><div class="line">exports = &#123;&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 入口：main.js</span></div><div class="line"><span class="keyword">let</span> dm = <span class="built_in">require</span>(<span class="string">'./demoModule.js'</span>);  <span class="comment">// 引用模块</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> eee = <span class="string">'eee'</span>; <span class="comment">// 这里并不是最外层上下文</span></div><div class="line">rrr = <span class="string">'rrr'</span>; <span class="comment">// 2.隐式定义的变量（未定义直接赋值的变量）</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(global.lll);</div><div class="line"><span class="built_in">console</span>.log(global.aaa);</div><div class="line"><span class="built_in">console</span>.log(global.ttt);</div><div class="line"><span class="built_in">console</span>.log(global.eee);</div><div class="line"><span class="built_in">console</span>.log(global.rrr);</div><div class="line"></div><div class="line"><span class="comment">// 还有第三种情况：“3.在最外层定义的变量 ”  也是全局变量，下边会在REPL中测试这种情况</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 运行以上脚本</div><div class="line">node main.js</div><div class="line"><span class="meta">#</span> 结果: </div><div class="line">lll</div><div class="line">undefined</div><div class="line">ttt</div><div class="line">undefined</div><div class="line">rrr</div><div class="line"><span class="meta">#</span> 对比下结果吧</div></pre></td></tr></table></figure>
+<p><em>结论：使用 <code>var</code> 定义变量，避免引入全局变量，因为全局变量会污染命名空间，提高代码耦合的风险。</em></p>
+<p><em>注意点：在正常的node编程中，所处的上下文一般是当前模块，所以不存在“3.在最外层定义的变量”</em><br><em>即使上边demo里，入口main.js也不是最外层的上下文</em></p>
+<p>在REPL中，做如下测试：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span> var replTest = 'replTest'; global.replTest;</div><div class="line">'replTest'</div><div class="line"><span class="meta">&gt;</span> .exit</div></pre></td></tr></table></figure>
+<p>可以看到在REPL中定义的变量是“最外层”上下文，隐式或者显示的定义变量都会定义到global对象上</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -409,7 +405,8 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><p>开发中不可避免的会处理各种兼容问题，这篇持续整理一些常见的api/es6的polyfill。</p>
+<h3 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create"></a>Object.create</h3><p>使用指定的原型对象和其属性创建了一个新的对象。<br><em>Object.create(proto, [ propertiesObject ])</em><br></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -428,7 +425,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><p>首先明确几个概念和背景。<br>ES6也就是我们说的ES2015，大多数高级浏览器都支持。<br>ES7一般是我们所说的ES2016。<br>但是也有人把ES7当做ES2017，也就是正在提议的标准（ES2017 Features）。不过官方应该是把ES2017当做ES8了。<br></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
