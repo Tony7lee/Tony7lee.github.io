@@ -212,6 +212,64 @@
             <div class="postShorten-header">
                 <h1 class="postShorten-title" itemprop="headline">
                     
+                        <a class="link-unstyled" href="/2017/09/30/node模块路径的那些事/">
+                            node模块缓存那些事
+                        </a>
+                    
+                </h1>
+                <div class="postShorten-meta">
+    <time itemprop="datePublished" datetime="2017-09-30T22:03:56+08:00">
+	
+		    2017-09-30
+    	
+    </time>
+    
+        <span>发布在 </span>
+        
+    <a class="category-link" href="/categories/node/">node</a>
+
+
+    
+</div>
+
+            </div>
+            
+                <div class="postShorten-content" itemprop="articleBody">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;Node模块分为原生模块和文件模块，尽管原生模块与文件模块的优先级不同，但是都会优先于从文件模块的缓存中加载已经存在的模块。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;当我们更改一个文件模块的代码后，再次require依然会读缓存，此时需要删除<code>require.cache</code>上对应文件路径的缓存引用地址，文件系统就会重新查找并重新缓存文件了。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;这种更新打破缓存的方式，即使文件模块存在循环引用也不会受到影响，因为require会以新文件的形式进行文件查找并缓存，我们删除的只是缓存系统的引用。</p>
+<hr>
+<h4 id="来看一个栗子"><a href="#来看一个栗子" class="headerlink" title="来看一个栗子"></a>来看一个栗子</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 文件：a.js</span></div><div class="line"><span class="keyword">var</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>).b;</div><div class="line">exports.a = <span class="string">'a from a.js'</span>;</div><div class="line">exports.b = b;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 文件：b.js</span></div><div class="line"><span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>).a;</div><div class="line">exports.b = <span class="string">'b from b.js'</span>;</div><div class="line">exports.a = a;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 执行</span></div><div class="line"><span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>);</div><div class="line"><span class="keyword">var</span> b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 结果：</div><div class="line">&gt; a</div><div class="line">&#123; a: &apos;a from a.js&apos;, b: &apos;b from b.js&apos; &#125;</div><div class="line">&gt; b</div><div class="line">&#123; b: &apos;b from b.js&apos;, a: undefined &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 修改文件：b.js</span></div><div class="line"><span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">'./a.js'</span>).a;</div><div class="line">exports.b = <span class="string">'b from b.js. changed value'</span>;</div><div class="line">exports.a = a;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 执行</span></div><div class="line"><span class="keyword">delete</span> <span class="built_in">require</span>.cache[<span class="built_in">require</span>.resolve(<span class="string">'./b.js'</span>)];</div><div class="line">b = <span class="built_in">require</span>(<span class="string">'./b.js'</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># 结果：</div><div class="line">&gt; a</div><div class="line">&#123; a: &apos;a from a.js&apos;, b: &apos;b from b.js&apos; &#125;</div><div class="line">&gt; b</div><div class="line">&#123; b: &apos;b from b.js. changed value&apos;, a: &apos;a from a.js&apos; &#125;</div></pre></td></tr></table></figure>
+
+                    
+                        
+                    
+                    
+                        <p>
+                            <a href="/2017/09/30/node模块路径的那些事/#post-footer" class="postShorten-excerpt_link link">
+                                评论和共享
+                            </a>
+                        </p>
+                    
+                </div>
+            
+        </div>
+        
+    </article>
+    
+    
+    <article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+        <div class="postShorten-wrap">
+            
+            <div class="postShorten-header">
+                <h1 class="postShorten-title" itemprop="headline">
+                    
                         <a class="link-unstyled" href="/2017/09/15/ES6及其他新特性中需要注意的地方/">
                             ES6及其他新特性中需要注意的地方
                         </a>
@@ -275,7 +333,7 @@
 
                 <footer id="footer" class="main-content-wrap">
     <span class="copyrights">
-        Copyrights &copy; 2017 Later. All Rights Reserved.
+        Copyrights &copy; 2018 Later. All Rights Reserved.
     </span>
 </footer>
 
@@ -418,13 +476,13 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://later.tech/2017/08/08/node模块路径的那些事/">
-                            <h3 class="media-heading">node模块路径的那些事</h3>
+                        <a class="link-unstyled" href="http://later.tech/2017/09/15/ES6及其他新特性中需要注意的地方/">
+                            <h3 class="media-heading">ES6及其他新特性中需要注意的地方</h3>
                         </a>
                         <span class="media-meta">
                             <span class="media-date text-small">
                                 
-                                    2017年8月8日
+                                    2017年9月15日
                                 
                             </span>
                         </span>
@@ -437,13 +495,13 @@
                 <div class="media">
                     
                     <div class="media-body">
-                        <a class="link-unstyled" href="http://later.tech/2017/09/15/ES6及其他新特性中需要注意的地方/">
-                            <h3 class="media-heading">ES6及其他新特性中需要注意的地方</h3>
+                        <a class="link-unstyled" href="http://later.tech/2017/09/30/node模块路径的那些事/">
+                            <h3 class="media-heading">node模块缓存那些事</h3>
                         </a>
                         <span class="media-meta">
                             <span class="media-date text-small">
                                 
-                                    2017年9月15日
+                                    2017年9月30日
                                 
                             </span>
                         </span>
